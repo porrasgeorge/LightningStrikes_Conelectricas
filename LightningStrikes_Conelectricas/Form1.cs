@@ -428,10 +428,6 @@ namespace LightningStrikes_Conelectricas
             else
                 str3D = "2D";
             string nombreArchivo = NombreCoop + " " + fechaInicial + " - " + fechaFinal + "_" + str3D;
-            //string nombreArchivo = "";
-
-            //System.IO.File.WriteAllLines(nombreArchivo, lineas);
-
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -460,6 +456,51 @@ namespace LightningStrikes_Conelectricas
                 cooperativa = cb_cooperativa.SelectedValue.ToString();
                 int cooperativaInt = Convert.ToInt32(cooperativa);
                 this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaInt);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_MesActual_Click(object sender, EventArgs e)
+        {
+            DateTime dateFinal = DateTime.Today;
+            DateTime dateInicial = DateTime.Today;
+            dateInicial = dateInicial.AddMonths(-1);
+            this.dtp_final.Value = new DateTime(dateFinal.Year, dateFinal.Month, 1);
+            this.dtp_Inicial.Value = new DateTime(dateInicial.Year, dateInicial.Month, 1);
+        }
+
+        private void btn_mesAtras_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateInicial = this.dtp_Inicial.Value;
+                DateTime dateFinal = this.dtp_final.Value;
+
+                dateInicial = dateInicial.AddMonths(-1);
+                dateFinal = dateFinal.AddMonths(-1);
+                this.dtp_Inicial.Value = dateInicial;
+                this.dtp_final.Value = dateFinal;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_mesAdelante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateInicial = this.dtp_Inicial.Value;
+                DateTime dateFinal = this.dtp_final.Value;
+
+                dateInicial = dateInicial.AddMonths(1);
+                dateFinal = dateFinal.AddMonths(1);
+                this.dtp_Inicial.Value = dateInicial;
+                this.dtp_final.Value = dateFinal;
             }
             catch (System.Exception ex)
             {
