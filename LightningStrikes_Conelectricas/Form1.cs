@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace LightningStrikes_Conelectricas
     {
         string fechaInicial;
         string fechaFinal;
-        string cooperativa;
+        int cooperativaID;
 
         public int MaxValue()
         {
@@ -34,8 +35,9 @@ namespace LightningStrikes_Conelectricas
         public Form1()
         {
             InitializeComponent();
-            var dataSource = new List<Cooperativa>();
 
+            var dataSource = new List<Cooperativa>();
+            
             dataSource.Add(new Cooperativa() { Name = "Coopeguanacaste", Value = "1" });
             dataSource.Add(new Cooperativa() { Name = "Coopelesca", Value = "2" });
             dataSource.Add(new Cooperativa() { Name = "Coopealfaroruiz", Value = "3" });
@@ -47,10 +49,11 @@ namespace LightningStrikes_Conelectricas
             this.cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
+            cooperativaID = 1;
 
         }
 
-        private void btn_Consultar_Click(object sender, EventArgs e)
+        private void btn_createKML_Click(object sender, EventArgs e)
         {
             int NumeroRayos = 0;
             bool IntConvertido = false;
@@ -484,15 +487,17 @@ namespace LightningStrikes_Conelectricas
             }
         }
 
-        private void btn_Consultar_Click_1(object sender, EventArgs e)
+        private void btn_Consultar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
-                cooperativa = cb_cooperativa.SelectedValue.ToString();
-                int cooperativaInt = Convert.ToInt32(cooperativa);
-                this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaInt);
+                //cooperativa = cb_cooperativa.SelectedValue.ToString();
+                //int cooperativaInt = Convert.ToInt32(cooperativa);
+                //cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+                this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaID);
             }
             catch (System.Exception ex)
             {
@@ -542,7 +547,16 @@ namespace LightningStrikes_Conelectricas
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
+                
             }
         }
+
+
+        private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+        }
+
+
     }
 }

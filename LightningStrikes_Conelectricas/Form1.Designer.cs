@@ -51,6 +51,7 @@
             this.btn_mesAtras = new System.Windows.Forms.Button();
             this.btn_mesAdelante = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.pb_cargando = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightning1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
@@ -108,6 +109,7 @@
             this.cb_cooperativa.Name = "cb_cooperativa";
             this.cb_cooperativa.Size = new System.Drawing.Size(115, 21);
             this.cb_cooperativa.TabIndex = 5;
+            this.cb_cooperativa.SelectionChangeCommitted += new System.EventHandler(this.cb_cooperativa_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -128,10 +130,10 @@
             this.latitudDataGridViewTextBoxColumn,
             this.longitudDataGridViewTextBoxColumn});
             this.dgv_lightning1.DataSource = this.getLightningsBindingSource;
-            this.dgv_lightning1.Location = new System.Drawing.Point(20, 237);
+            this.dgv_lightning1.Location = new System.Drawing.Point(20, 291);
             this.dgv_lightning1.Name = "dgv_lightning1";
             this.dgv_lightning1.ReadOnly = true;
-            this.dgv_lightning1.Size = new System.Drawing.Size(372, 526);
+            this.dgv_lightning1.Size = new System.Drawing.Size(372, 472);
             this.dgv_lightning1.TabIndex = 7;
             // 
             // cantidadDataGridViewTextBoxColumn
@@ -177,7 +179,7 @@
             this.btn_createKML.TabIndex = 8;
             this.btn_createKML.Text = "Crear KML";
             this.btn_createKML.UseVisualStyleBackColor = true;
-            this.btn_createKML.Click += new System.EventHandler(this.btn_Consultar_Click);
+            this.btn_createKML.Click += new System.EventHandler(this.btn_createKML_Click);
             // 
             // Check3D
             // 
@@ -196,7 +198,7 @@
             this.btn_Consultar.TabIndex = 10;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = true;
-            this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click_1);
+            this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click);
             // 
             // btn_MesActual
             // 
@@ -238,11 +240,19 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "3D";
             // 
+            // pb_cargando
+            // 
+            this.pb_cargando.Location = new System.Drawing.Point(23, 247);
+            this.pb_cargando.Name = "pb_cargando";
+            this.pb_cargando.Size = new System.Drawing.Size(366, 23);
+            this.pb_cargando.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 775);
+            this.Controls.Add(this.pb_cargando);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_mesAdelante);
             this.Controls.Add(this.btn_mesAtras);
@@ -293,6 +303,7 @@
         private System.Windows.Forms.Button btn_mesAtras;
         private System.Windows.Forms.Button btn_mesAdelante;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ProgressBar pb_cargando;
     }
 }
 
