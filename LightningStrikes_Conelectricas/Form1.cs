@@ -333,13 +333,14 @@ namespace LightningStrikes_Conelectricas
 
                 NumeroRayos = 0;
                 if (ContFila < NumFilas - 1)
+                {
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                latitud = 0.0;
-                longitud = 0.0;
-                IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
-                longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
-
+                    latitud = 0.0;
+                    longitud = 0.0;
+                    IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
+                    latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
+                    longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
+                }
                 while (NumeroRayos > Valor1 && IntConvertido == true && ContFila < NumFilas - 1)
                 {
                     if (IntConvertido)
@@ -391,19 +392,20 @@ namespace LightningStrikes_Conelectricas
                 /// Nivel 0
                 /// 
                 lineas.Add("\t\t<Folder>");
-                lineas.Add("\t\t\t<name>Entre " + Convert.ToString(0) + " y " + Convert.ToString(Valor1) + " Descargas</name>");
+                lineas.Add("\t\t\t<name>Menos de "+ Convert.ToString(Valor1) + " Descargas</name>");
                 lineas.Add("\t\t\t<visibility>1</visibility>");
                 lineas.Add("\t\t\t<open>0</open>");
 
                 NumeroRayos = 0;
                 if (ContFila < NumFilas - 1)
+                { 
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                latitud = 0.0;
-                longitud = 0.0;
-                IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
-                longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
-
+                    latitud = 0.0;
+                    longitud = 0.0;
+                    IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
+                    latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
+                    longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
+                }
                 while (NumeroRayos > 0 && IntConvertido == true && ContFila < NumFilas - 1)
                 {
                     if (IntConvertido)
