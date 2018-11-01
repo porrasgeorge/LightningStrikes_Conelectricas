@@ -190,10 +190,11 @@ namespace LightningStrikes_Conelectricas
                     }
 
                     NumeroRayos = 0;
+                    ContFila++;
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
                     latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
                     longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
-                    ContFila++;
+                    
                 }
                 lineas.Add("\t\t</Folder>");
 
@@ -255,10 +256,11 @@ namespace LightningStrikes_Conelectricas
 
                     }
                     NumeroRayos = 0;
+                    ContFila++;
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
                     latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
                     longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
-                    ContFila++;
+                    
                 }
                 lineas.Add("\t\t</Folder>");
 
@@ -318,11 +320,13 @@ namespace LightningStrikes_Conelectricas
                     }
 
                     NumeroRayos = 0;
+                    ContFila++;
+
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
                     latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
                     longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
 
-                    ContFila++;
+                    
                 }
                 lineas.Add("\t\t</Folder>");
 
@@ -382,12 +386,10 @@ namespace LightningStrikes_Conelectricas
                     }
 
                     NumeroRayos = 0;
+                    ContFila++;
                     IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
                     latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
                     longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
-
-
-                    ContFila++;
                 }
                 lineas.Add("\t\t</Folder>");
 
@@ -446,10 +448,12 @@ namespace LightningStrikes_Conelectricas
                         lineas.Add("\t\t\t</Placemark>");
                     }
                     NumeroRayos = 0;
-                    IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                    latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
-                    longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
                     ContFila++;
+
+                    //IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
+                    //latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
+                    //longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
+                   
                 }
                 lineas.Add("\t\t</Folder>");
 
