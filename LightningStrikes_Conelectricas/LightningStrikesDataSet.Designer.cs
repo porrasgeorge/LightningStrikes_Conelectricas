@@ -314,11 +314,9 @@ namespace LightningStrikes_Conelectricas {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CountLightningsByDayDataTable : global::System.Data.TypedTableBase<CountLightningsByDayRow> {
             
+            private global::System.Data.DataColumn columnFecha;
+            
             private global::System.Data.DataColumn columnCantidad;
-            
-            private global::System.Data.DataColumn columnLatitud;
-            
-            private global::System.Data.DataColumn columnLongitud;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -355,25 +353,17 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FechaColumn {
+                get {
+                    return this.columnFecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn CantidadColumn {
                 get {
                     return this.columnCantidad;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LatitudColumn {
-                get {
-                    return this.columnLatitud;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LongitudColumn {
-                get {
-                    return this.columnLongitud;
                 }
             }
             
@@ -414,12 +404,11 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CountLightningsByDayRow AddCountLightningsByDayRow(int Cantidad, double Latitud, double Longitud) {
+            public CountLightningsByDayRow AddCountLightningsByDayRow(System.DateTime Fecha, int Cantidad) {
                 CountLightningsByDayRow rowCountLightningsByDayRow = ((CountLightningsByDayRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Cantidad,
-                        Latitud,
-                        Longitud};
+                        Fecha,
+                        Cantidad};
                 rowCountLightningsByDayRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCountLightningsByDayRow);
                 return rowCountLightningsByDayRow;
@@ -442,23 +431,19 @@ namespace LightningStrikes_Conelectricas {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
+                this.columnFecha = base.Columns["Fecha"];
                 this.columnCantidad = base.Columns["Cantidad"];
-                this.columnLatitud = base.Columns["Latitud"];
-                this.columnLongitud = base.Columns["Longitud"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecha);
                 this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidad);
-                this.columnLatitud = new global::System.Data.DataColumn("Latitud", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLatitud);
-                this.columnLongitud = new global::System.Data.DataColumn("Longitud", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLongitud);
+                this.columnFecha.ReadOnly = true;
                 this.columnCantidad.ReadOnly = true;
-                this.columnLatitud.ReadOnly = true;
-                this.columnLongitud.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -879,6 +864,22 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Fecha {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCountLightningsByDay.FechaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Fecha\' in table \'CountLightningsByDay\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCountLightningsByDay.FechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Cantidad {
                 get {
                     try {
@@ -895,34 +896,14 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Latitud {
-                get {
-                    try {
-                        return ((double)(this[this.tableCountLightningsByDay.LatitudColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Latitud\' in table \'CountLightningsByDay\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCountLightningsByDay.LatitudColumn] = value;
-                }
+            public bool IsFechaNull() {
+                return this.IsNull(this.tableCountLightningsByDay.FechaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Longitud {
-                get {
-                    try {
-                        return ((double)(this[this.tableCountLightningsByDay.LongitudColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Longitud\' in table \'CountLightningsByDay\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCountLightningsByDay.LongitudColumn] = value;
-                }
+            public void SetFechaNull() {
+                this[this.tableCountLightningsByDay.FechaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -935,30 +916,6 @@ namespace LightningStrikes_Conelectricas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCantidadNull() {
                 this[this.tableCountLightningsByDay.CantidadColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLatitudNull() {
-                return this.IsNull(this.tableCountLightningsByDay.LatitudColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLatitudNull() {
-                this[this.tableCountLightningsByDay.LatitudColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLongitudNull() {
-                return this.IsNull(this.tableCountLightningsByDay.LongitudColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLongitudNull() {
-                this[this.tableCountLightningsByDay.LongitudColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1254,9 +1211,8 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CountLightningsByDay";
+            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
-            tableMapping.ColumnMappings.Add("Latitud", "Latitud");
-            tableMapping.ColumnMappings.Add("Longitud", "Longitud");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1581,16 +1537,37 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             this._commandCollection = new global::System.Data.IDbCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection(global::LightningStrikes_Conelectricas.Properties.Settings.Default.LightningStrikesConnectionString);
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandText = "dbo.LightningUpdate";
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandText = "dbo.InsertLightning";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandType = global::System.Data.CommandType.StoredProcedure;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fechaHora", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@latitud", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 53, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@longitud", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 53, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int LightningUpdate() {
+        public virtual int InsertLightning(global::System.Nullable<global::System.DateTime> fechaHora, global::System.Nullable<double> latitud, global::System.Nullable<double> longitud) {
             global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[0]));
+            if ((fechaHora.HasValue == true)) {
+                command.Parameters[1].Value = ((System.DateTime)(fechaHora.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((latitud.HasValue == true)) {
+                command.Parameters[2].Value = ((double)(latitud.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((longitud.HasValue == true)) {
+                command.Parameters[3].Value = ((double)(longitud.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

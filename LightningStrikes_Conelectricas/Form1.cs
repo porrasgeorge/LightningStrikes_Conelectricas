@@ -498,10 +498,8 @@ namespace LightningStrikes_Conelectricas
             {
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
-                //cooperativa = cb_cooperativa.SelectedValue.ToString();
-                //int cooperativaInt = Convert.ToInt32(cooperativa);
-                //cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
                 this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaID);
+                this.countLightningsByDayTableAdapter.Fill(this.lightningStrikesDataSet.CountLightningsByDay, fechaInicial, fechaFinal, cooperativaID);
             }
             catch (System.Exception ex)
             {
@@ -561,6 +559,6 @@ namespace LightningStrikes_Conelectricas
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
         }
 
-
+       
     }
 }
