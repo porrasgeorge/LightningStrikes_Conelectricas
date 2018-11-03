@@ -449,10 +449,6 @@ namespace LightningStrikes_Conelectricas
                     }
                     NumeroRayos = 0;
                     ContFila++;
-
-                    //IntConvertido = Int32.TryParse(dgv_lightning1.Rows[ContFila].Cells[0].Value.ToString(), out NumeroRayos);
-                    //latitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[1].Value.ToString());
-                    //longitud = Convert.ToDouble(dgv_lightning1.Rows[ContFila].Cells[2].Value.ToString());
                    
                 }
                 lineas.Add("\t\t</Folder>");
@@ -498,8 +494,10 @@ namespace LightningStrikes_Conelectricas
             {
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
-                this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaID);
-                this.countLightningsByDayTableAdapter.Fill(this.lightningStrikesDataSet.CountLightningsByDay, fechaInicial, fechaFinal, cooperativaID);
+                //this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaID);
+                
+                dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData( fechaInicial, fechaFinal, cooperativaID);
+                dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
             }
             catch (System.Exception ex)
             {
@@ -559,6 +557,44 @@ namespace LightningStrikes_Conelectricas
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
         }
 
-       
+        private void btn_CrearCSV_Click(object sender, EventArgs e)
+        {
+            string CSV_Content = "";
+
+            foreach (DataGridViewRow row in dgv_lightningByDay.Rows)
+            {
+                CSV_Content += Convert.ToString(row.Cells[0].Value) + "," + Convert.ToString(row.Cells[1].Value) + "\r\n";
+            }
+
+            string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
+            string nombreArchivo = NombreCoop + " " + fechaInicial + " - " + fechaFinal;
+
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.FileName = nombreArchivo;
+            saveFileDialog1.CheckFileExists = false;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "csv";
+            saveFileDialog1.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                // poner un try catch archivo siendo usado
+                
+
+
+                nombreArchivo = saveFileDialog1.FileName;
+                //System.IO.File.WriteAllLines(nombreArchivo, CSV_Content);
+                System.IO.File.WriteAllText(nombreArchivo, CSV_Content);
+                MessageBox.Show(nombreArchivo + " \n\nCREADO SATISFACTORIAMENTE", "CSV");
+            }
+
+        }
+
+        
     }
 }
