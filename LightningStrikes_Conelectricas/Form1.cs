@@ -58,6 +58,8 @@ namespace LightningStrikes_Conelectricas
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+            dgv_lightningByDay.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgv_lightningByMonth.Columns[0].DefaultCellStyle.Format = "MM/yyyy";
 
         }
 
@@ -630,6 +632,7 @@ namespace LightningStrikes_Conelectricas
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
 
+                dgv_lightningByMonth.DataSource = this.countLightningsByMonthTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
                 dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
                 dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
             }
