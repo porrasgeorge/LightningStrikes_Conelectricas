@@ -280,9 +280,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(297, 23);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(162, 24);
+            this.label5.Size = new System.Drawing.Size(158, 24);
             this.label5.TabIndex = 21;
-            this.label5.Text = "Descargas por día";
+            this.label5.Text = "Descargas diarias";
             // 
             // label6
             // 
@@ -412,9 +412,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(12, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 24);
+            this.label7.Size = new System.Drawing.Size(196, 24);
             this.label7.TabIndex = 25;
-            this.label7.Text = "Descargas por mes";
+            this.label7.Text = "Descargas mensuales";
             // 
             // countLightningsByDayBindingSource
             // 
@@ -501,7 +501,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 769);
+            this.ClientSize = new System.Drawing.Size(1004, 769);
             this.Controls.Add(this.panel_datos);
             this.Controls.Add(this.panel_fechas);
             this.Controls.Add(this.pictureBox1);

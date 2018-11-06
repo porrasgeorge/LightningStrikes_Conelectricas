@@ -571,6 +571,16 @@ namespace LightningStrikes_Conelectricas
         {
             string CSV_Content = "";
 
+            CSV_Content += "Descargas Mensuales\r\n";
+            CSV_Content += "Mes,Cantidad de descargas\r\n";
+            foreach (DataGridViewRow row in dgv_lightningByMonth.Rows)
+            {
+                CSV_Content += Convert.ToString(row.Cells[0].Value) + "," + Convert.ToString(row.Cells[1].Value) + "\r\n";
+            }
+
+            CSV_Content += "\r\n\r\n\r\n";
+            CSV_Content += "Descargas Diarias\r\n";
+            CSV_Content += "Dia,Cantidad de descargas\r\n";
             foreach (DataGridViewRow row in dgv_lightningByDay.Rows)
             {
                 CSV_Content += Convert.ToString(row.Cells[0].Value) + "," + Convert.ToString(row.Cells[1].Value) + "\r\n";
