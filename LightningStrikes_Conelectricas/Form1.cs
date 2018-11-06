@@ -16,6 +16,7 @@ namespace LightningStrikes_Conelectricas
         string fechaInicial;
         string fechaFinal;
         int cooperativaID;
+        bool disableFiringEvents = false;
 
         public int MaxValue()
         {
@@ -46,14 +47,16 @@ namespace LightningStrikes_Conelectricas
             dataSource.Add(new Cooperativa() { Name = "ESPH", Value = "6" });
             dataSource.Add(new Cooperativa() { Name = "Costa Rica", Value = "7" });
 
+            this.dtp_Inicial.Value = DateTime.Today.AddMonths(-1);
+
             cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
             cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_cooperativa.SelectedIndex = cb_cooperativa.Items.Count - 1;
+            //cb_cooperativa.SelectedIndex = cb_cooperativa.Items.Count - 1;
+            cb_cooperativa.SelectedIndex = 2;
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
-            ActualizarTablas();
-
+            
             foreach (DataGridViewColumn column in dgv_lightning1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -520,17 +523,21 @@ namespace LightningStrikes_Conelectricas
 
         private void btn_MesActual_Click(object sender, EventArgs e)
         {
+            disableFiringEvents = true;
             DateTime dateFinal = DateTime.Today;
             DateTime dateInicial = DateTime.Today;
             dateInicial = dateInicial.AddMonths(-1);
             this.dtp_final.Value = new DateTime(dateFinal.Year, dateFinal.Month, 1);
             this.dtp_Inicial.Value = new DateTime(dateInicial.Year, dateInicial.Month, 1);
+            disableFiringEvents = false;
+            ActualizarTablas();
         }
 
         private void btn_mesAtras_Click(object sender, EventArgs e)
         {
             try
             {
+                disableFiringEvents = true;
                 DateTime dateInicial = this.dtp_Inicial.Value;
                 DateTime dateFinal = this.dtp_final.Value;
 
@@ -538,6 +545,8 @@ namespace LightningStrikes_Conelectricas
                 dateFinal = dateFinal.AddMonths(-1);
                 this.dtp_Inicial.Value = dateInicial;
                 this.dtp_final.Value = dateFinal;
+                disableFiringEvents = false;
+                ActualizarTablas();
             }
             catch (System.Exception ex)
             {
@@ -549,6 +558,7 @@ namespace LightningStrikes_Conelectricas
         {
             try
             {
+                disableFiringEvents = true;
                 DateTime dateInicial = this.dtp_Inicial.Value;
                 DateTime dateFinal = this.dtp_final.Value;
 
@@ -556,6 +566,8 @@ namespace LightningStrikes_Conelectricas
                 dateFinal = dateFinal.AddMonths(1);
                 this.dtp_Inicial.Value = dateInicial;
                 this.dtp_final.Value = dateFinal;
+                disableFiringEvents = false;
+                ActualizarTablas();
             }
             catch (System.Exception ex)
             {
@@ -624,12 +636,14 @@ namespace LightningStrikes_Conelectricas
 
         private void dtp_Inicial_ValueChanged(object sender, EventArgs e)
         {
-            ActualizarTablas();
+            if (!disableFiringEvents)
+                ActualizarTablas();
         }
 
         private void dtp_final_ValueChanged(object sender, EventArgs e)
         {
-            ActualizarTablas();
+            if (!disableFiringEvents)
+                ActualizarTablas();
         }
 
         private void ActualizarTablas()
@@ -654,25 +668,25 @@ namespace LightningStrikes_Conelectricas
             lbl_cargando.Visible = false;
             lbl_cargando.Update();
 
-            //foreach (DataGridViewColumn column in dgv_lightning1.Columns)
-            //{
-            //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            //}
         }
 
         private void btn_diaUltimo_Click(object sender, EventArgs e)
         {
+            disableFiringEvents = true;
             DateTime dateFinal = DateTime.Today;
             DateTime dateInicial = DateTime.Today;
             dateInicial = dateInicial.AddDays(-1);
             this.dtp_final.Value = dateFinal;
             this.dtp_Inicial.Value = dateInicial;
+            disableFiringEvents = false;
+            ActualizarTablas();
         }
 
         private void btn_diaAtras_Click(object sender, EventArgs e)
         {
             try
             {
+                disableFiringEvents = true;
                 DateTime dateInicial = this.dtp_Inicial.Value;
                 DateTime dateFinal = this.dtp_final.Value;
 
@@ -680,6 +694,8 @@ namespace LightningStrikes_Conelectricas
                 dateFinal = dateFinal.AddDays(-1);
                 this.dtp_Inicial.Value = dateInicial;
                 this.dtp_final.Value = dateFinal;
+                disableFiringEvents = false;
+                ActualizarTablas();
             }
             catch (System.Exception ex)
             {
@@ -691,6 +707,7 @@ namespace LightningStrikes_Conelectricas
         {
             try
             {
+                disableFiringEvents = true;
                 DateTime dateInicial = this.dtp_Inicial.Value;
                 DateTime dateFinal = this.dtp_final.Value;
 
@@ -698,6 +715,8 @@ namespace LightningStrikes_Conelectricas
                 dateFinal = dateFinal.AddDays(1);
                 this.dtp_Inicial.Value = dateInicial;
                 this.dtp_final.Value = dateFinal;
+                disableFiringEvents = false;
+                ActualizarTablas();
             }
             catch (System.Exception ex)
             {
@@ -705,6 +724,9 @@ namespace LightningStrikes_Conelectricas
             }
         }
 
-
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            ActualizarTablas();
+        }
     }
 }
