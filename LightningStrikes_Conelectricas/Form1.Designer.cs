@@ -134,8 +134,9 @@
             this.cb_cooperativa.Name = "cb_cooperativa";
             this.cb_cooperativa.Size = new System.Drawing.Size(210, 21);
             this.cb_cooperativa.TabIndex = 5;
-            this.cb_cooperativa.SelectedIndexChanged += new System.EventHandler(this.cb_cooperativa_SelectedIndexChanged);
+//            this.cb_cooperativa.SelectedIndexChanged += new System.EventHandler(this.cb_cooperativa_SelectedIndexChanged);
             this.cb_cooperativa.SelectionChangeCommitted += new System.EventHandler(this.cb_cooperativa_SelectionChangeCommitted);
+            
             // 
             // label3
             // 

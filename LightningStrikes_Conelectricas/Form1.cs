@@ -46,11 +46,13 @@ namespace LightningStrikes_Conelectricas
             dataSource.Add(new Cooperativa() { Name = "ESPH", Value = "6" });
             dataSource.Add(new Cooperativa() { Name = "Costa Rica", Value = "7" });
 
-            this.cb_cooperativa.DataSource = dataSource;
+            cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
             cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cooperativaID = 1;
+            cb_cooperativa.SelectedIndex = cb_cooperativa.Items.Count - 1;
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+            ActualizarTablas();
 
             foreach (DataGridViewColumn column in dgv_lightning1.Columns)
             {
@@ -561,10 +563,7 @@ namespace LightningStrikes_Conelectricas
         }
 
 
-        private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
-        }
+
 
         private void btn_CrearCSV_Click(object sender, EventArgs e)
         {
@@ -599,9 +598,16 @@ namespace LightningStrikes_Conelectricas
 
         }
 
-        private void cb_cooperativa_SelectedIndexChanged(object sender, EventArgs e)
+        //private void cb_cooperativa_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ActualizarTablas();
+        //}
+
+        private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             ActualizarTablas();
+
         }
 
         private void dtp_Inicial_ValueChanged(object sender, EventArgs e)
