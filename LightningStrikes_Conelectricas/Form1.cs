@@ -489,13 +489,13 @@ namespace LightningStrikes_Conelectricas
 
         private void btn_Consultar_Click(object sender, EventArgs e)
         {
-
+            lbl_cargando.Visible = true;
+            lbl_cargando.Update();
             try
             {
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
-                //this.getLightningsTableAdapter.Fill(this.lightningStrikesDataSet.GetLightnings, fechaInicial, fechaFinal, cooperativaID);
-                
+
                 dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData( fechaInicial, fechaFinal, cooperativaID);
                 dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
             }
@@ -503,6 +503,9 @@ namespace LightningStrikes_Conelectricas
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+
+            lbl_cargando.Visible = false;
+            lbl_cargando.Update();
         }
 
         private void btn_MesActual_Click(object sender, EventArgs e)
@@ -582,11 +585,6 @@ namespace LightningStrikes_Conelectricas
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-
-                // poner un try catch archivo siendo usado
-                
-
-
                 nombreArchivo = saveFileDialog1.FileName;
                 //System.IO.File.WriteAllLines(nombreArchivo, CSV_Content);
                 System.IO.File.WriteAllText(nombreArchivo, CSV_Content);
