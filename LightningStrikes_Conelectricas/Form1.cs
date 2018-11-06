@@ -49,7 +49,13 @@ namespace LightningStrikes_Conelectricas
             this.cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
+            cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
             cooperativaID = 1;
+
+            foreach (DataGridViewColumn column in dgv_lightning1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
         }
 
@@ -487,26 +493,26 @@ namespace LightningStrikes_Conelectricas
             }
         }
 
-        private void btn_Consultar_Click(object sender, EventArgs e)
-        {
-            lbl_cargando.Visible = true;
-            lbl_cargando.Update();
-            try
-            {
-                fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
-                fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
+        //private void btn_Consultar_Click(object sender, EventArgs e)
+        //{
+        //    lbl_cargando.Visible = true;
+        //    lbl_cargando.Update();
+        //    try
+        //    {
+        //        fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
+        //        fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
 
-                dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData( fechaInicial, fechaFinal, cooperativaID);
-                dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+        //        dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData( fechaInicial, fechaFinal, cooperativaID);
+        //        dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message);
+        //    }
 
-            lbl_cargando.Visible = false;
-            lbl_cargando.Update();
-        }
+        //    lbl_cargando.Visible = false;
+        //    lbl_cargando.Update();
+        //}
 
         private void btn_MesActual_Click(object sender, EventArgs e)
         {
@@ -593,6 +599,93 @@ namespace LightningStrikes_Conelectricas
 
         }
 
-        
+        private void cb_cooperativa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarTablas();
+        }
+
+        private void dtp_Inicial_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarTablas();
+        }
+
+        private void dtp_final_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarTablas();
+        }
+
+        private void ActualizarTablas()
+        {
+            lbl_cargando.Visible = true;
+            lbl_cargando.BringToFront();
+            lbl_cargando.Update();
+            try
+            {
+                fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
+                fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
+
+                dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
+                dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+            lbl_cargando.Visible = false;
+            lbl_cargando.Update();
+
+            //foreach (DataGridViewColumn column in dgv_lightning1.Columns)
+            //{
+            //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
+        }
+
+        private void btn_diaUltimo_Click(object sender, EventArgs e)
+        {
+            DateTime dateFinal = DateTime.Today;
+            DateTime dateInicial = DateTime.Today;
+            dateInicial = dateInicial.AddDays(-1);
+            this.dtp_final.Value = dateFinal;
+            this.dtp_Inicial.Value = dateInicial;
+        }
+
+        private void btn_diaAtras_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateInicial = this.dtp_Inicial.Value;
+                DateTime dateFinal = this.dtp_final.Value;
+
+                dateInicial = dateInicial.AddDays(-1);
+                dateFinal = dateFinal.AddDays(-1);
+                this.dtp_Inicial.Value = dateInicial;
+                this.dtp_final.Value = dateFinal;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_diaAdelante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateInicial = this.dtp_Inicial.Value;
+                DateTime dateFinal = this.dtp_final.Value;
+
+                dateInicial = dateInicial.AddDays(1);
+                dateFinal = dateFinal.AddDays(1);
+                this.dtp_Inicial.Value = dateInicial;
+                this.dtp_final.Value = dateFinal;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
 }
