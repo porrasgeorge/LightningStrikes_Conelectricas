@@ -60,13 +60,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel_fechas = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btn_diaAtras = new System.Windows.Forms.Button();
             this.btn_diaUltimo = new System.Windows.Forms.Button();
             this.btn_diaAdelante = new System.Windows.Forms.Button();
-            this.panel_datos = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel_datos = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightning1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
@@ -74,10 +74,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).BeginInit();
             this.panel_fechas.SuspendLayout();
-            this.panel_datos.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel_datos.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -328,20 +328,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(13, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(265, 31);
+            this.label5.Size = new System.Drawing.Size(183, 24);
             this.label5.TabIndex = 21;
             this.label5.Text = "Descargas por fecha";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(324, 26);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(297, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(313, 31);
+            this.label6.Size = new System.Drawing.Size(219, 24);
             this.label6.TabIndex = 22;
             this.label6.Text = "Descargas por ubicación";
             // 
@@ -355,6 +355,30 @@
             this.panel_fechas.Name = "panel_fechas";
             this.panel_fechas.Size = new System.Drawing.Size(685, 96);
             this.panel_fechas.TabIndex = 24;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.cb_cooperativa);
+            this.panel3.Location = new System.Drawing.Point(431, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(249, 88);
+            this.panel3.TabIndex = 26;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btn_MesActual);
+            this.panel2.Controls.Add(this.btn_diaAtras);
+            this.panel2.Controls.Add(this.btn_mesAdelante);
+            this.panel2.Controls.Add(this.btn_mesAtras);
+            this.panel2.Controls.Add(this.btn_diaUltimo);
+            this.panel2.Controls.Add(this.btn_diaAdelante);
+            this.panel2.Location = new System.Drawing.Point(3, 57);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(422, 34);
+            this.panel2.TabIndex = 26;
             // 
             // btn_diaAtras
             // 
@@ -386,6 +410,18 @@
             this.btn_diaAdelante.UseVisualStyleBackColor = true;
             this.btn_diaAdelante.Click += new System.EventHandler(this.btn_diaAdelante_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dtp_Inicial);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dtp_final);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(422, 48);
+            this.panel1.TabIndex = 26;
+            // 
             // panel_datos
             // 
             this.panel_datos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -400,44 +436,8 @@
             this.panel_datos.Controls.Add(this.btn_CrearCSV);
             this.panel_datos.Location = new System.Drawing.Point(16, 222);
             this.panel_datos.Name = "panel_datos";
-            this.panel_datos.Size = new System.Drawing.Size(684, 554);
+            this.panel_datos.Size = new System.Drawing.Size(685, 554);
             this.panel_datos.TabIndex = 25;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dtp_Inicial);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dtp_final);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 48);
-            this.panel1.TabIndex = 26;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btn_MesActual);
-            this.panel2.Controls.Add(this.btn_diaAtras);
-            this.panel2.Controls.Add(this.btn_mesAdelante);
-            this.panel2.Controls.Add(this.btn_mesAtras);
-            this.panel2.Controls.Add(this.btn_diaUltimo);
-            this.panel2.Controls.Add(this.btn_diaAdelante);
-            this.panel2.Location = new System.Drawing.Point(3, 57);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(422, 34);
-            this.panel2.TabIndex = 26;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.cb_cooperativa);
-            this.panel3.Location = new System.Drawing.Point(431, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(249, 88);
-            this.panel3.TabIndex = 26;
             // 
             // Form1
             // 
@@ -459,13 +459,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).EndInit();
             this.panel_fechas.ResumeLayout(false);
-            this.panel_datos.ResumeLayout(false);
-            this.panel_datos.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel_datos.ResumeLayout(false);
+            this.panel_datos.PerformLayout();
             this.ResumeLayout(false);
 
         }
