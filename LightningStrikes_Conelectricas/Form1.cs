@@ -47,8 +47,6 @@ namespace LightningStrikes_Conelectricas
             dataSource.Add(new Cooperativa() { Name = "ESPH", Value = "6" });
             dataSource.Add(new Cooperativa() { Name = "Costa Rica", Value = "7" });
 
-            this.dtp_Inicial.Value = DateTime.Today.AddMonths(-1);
-
             cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
@@ -63,6 +61,7 @@ namespace LightningStrikes_Conelectricas
             }
             dgv_lightningByDay.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy";
             dgv_lightningByMonth.Columns[0].DefaultCellStyle.Format = "MM/yyyy";
+            
 
         }
 
@@ -500,27 +499,6 @@ namespace LightningStrikes_Conelectricas
             }
         }
 
-        //private void btn_Consultar_Click(object sender, EventArgs e)
-        //{
-        //    lbl_cargando.Visible = true;
-        //    lbl_cargando.Update();
-        //    try
-        //    {
-        //        fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
-        //        fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
-
-        //        dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData( fechaInicial, fechaFinal, cooperativaID);
-        //        dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        System.Windows.Forms.MessageBox.Show(ex.Message);
-        //    }
-
-        //    lbl_cargando.Visible = false;
-        //    lbl_cargando.Update();
-        //}
-
         private void btn_MesActual_Click(object sender, EventArgs e)
         {
             disableFiringEvents = true;
@@ -656,9 +634,12 @@ namespace LightningStrikes_Conelectricas
                 fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
                 fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
 
-                dgv_lightningByMonth.DataSource = this.countLightningsByMonthTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
-                dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
-                dgv_lightning1.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
+                dgv_lightningByMonth.DataSource = this.countLightningsByMonthTableAdapter.GetData(fechaInicial,fechaFinal, cooperativaID);
+                dgv_lightningByMonth.ClearSelection();
+                dgv_lightningAll.DataSource = null;
+                dgv_lightningByDay.DataSource = null;
+                dgv_lightning1.ClearSelection();
+
             }
             catch (System.Exception ex)
             {
@@ -728,5 +709,24 @@ namespace LightningStrikes_Conelectricas
         {
             ActualizarTablas();
         }
+
+        private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            string fecha = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
+            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID);
+            dgv_lightningAll.ClearSelection();
+        }
+
+        private void dgv_lightningByMonth_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            string fecha = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
+            dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fecha, cooperativaID);
+            dgv_lightningAll.DataSource = null;
+            dgv_lightningByDay.ClearSelection();
+        }
+
+
     }
 }
