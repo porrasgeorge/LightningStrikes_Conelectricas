@@ -251,7 +251,7 @@
             this.lbl_cargando.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_cargando.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cargando.ForeColor = System.Drawing.Color.Red;
-            this.lbl_cargando.Location = new System.Drawing.Point(237, 227);
+            this.lbl_cargando.Location = new System.Drawing.Point(131, 217);
             this.lbl_cargando.Name = "lbl_cargando";
             this.lbl_cargando.Size = new System.Drawing.Size(474, 78);
             this.lbl_cargando.TabIndex = 20;

@@ -665,10 +665,15 @@ namespace LightningStrikes_Conelectricas
             lineas.Add("\t\t<open>1</open>");
             lineas.Add("\t\t<name>" + fechaCSV + "</name>");
 
+            lineas.Add("\t\t<Style id=\"noTag\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t</Style>");
+
             foreach (DataGridViewRow row in dgv_lightningAll.Rows)
             {
                 lineas.Add("\t\t<Placemark>");
                 lineas.Add("\t\t\t<name>" + Convert.ToString(row.Cells[0].Value) + "</name>");
+                lineas.Add("\t\t\t\t<styleUrl>#noTag</styleUrl>");
                 lineas.Add("\t\t\t<description>Amplitud: " + Convert.ToString(row.Cells[3].Value) + "kA</description>");
                 lineas.Add("\t\t\t<Point>");
                 lineas.Add("\t\t\t\t<coordinates>"+ Convert.ToString(row.Cells[1].Value) +","+ Convert.ToString(row.Cells[2].Value) + "</coordinates>");
