@@ -14,6 +14,7 @@ namespace LightningStrikes_Conelectricas
     public partial class Form1 : Form
     {
         string fechaInicial;
+        string fechaCSV = "";
         string fechaFinal;
         int cooperativaID;
         bool disableFiringEvents = false;
@@ -38,7 +39,9 @@ namespace LightningStrikes_Conelectricas
             InitializeComponent();
 
             var dataSource = new List<Cooperativa>();
-            
+            btn_CrearCSV.Enabled = false;
+            btn_crearKMLpoints.Enabled = false;
+
             dataSource.Add(new Cooperativa() { Name = "Coopeguanacaste", Value = "1" });
             dataSource.Add(new Cooperativa() { Name = "Coopelesca", Value = "2" });
             dataSource.Add(new Cooperativa() { Name = "Coopealfaroruiz", Value = "3" });
@@ -59,8 +62,14 @@ namespace LightningStrikes_Conelectricas
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            foreach (DataGridViewColumn column in dgv_lightningAll.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             dgv_lightningByDay.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy";
             dgv_lightningByMonth.Columns[0].DefaultCellStyle.Format = "MM/yyyy";
+            dgv_lightningAll.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             
 
         }
@@ -92,7 +101,7 @@ namespace LightningStrikes_Conelectricas
             }
             catch (Exception exep)
             {
-                MessageBox.Show("No hay datos seleccionados", "Error");
+                MessageBox.Show("No hay datos seleccionados\r\n" + exep.ToString(), "Error");
                 NoConvError = false;
             }
 
@@ -499,86 +508,28 @@ namespace LightningStrikes_Conelectricas
             }
         }
 
-        private void btn_MesActual_Click(object sender, EventArgs e)
-        {
-            disableFiringEvents = true;
-            DateTime dateFinal = DateTime.Today;
-            DateTime dateInicial = DateTime.Today;
-            dateInicial = dateInicial.AddMonths(-1);
-            this.dtp_final.Value = new DateTime(dateFinal.Year, dateFinal.Month, 1);
-            this.dtp_Inicial.Value = new DateTime(dateInicial.Year, dateInicial.Month, 1);
-            disableFiringEvents = false;
-            ActualizarTablas();
-        }
-
-        private void btn_mesAtras_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                disableFiringEvents = true;
-                DateTime dateInicial = this.dtp_Inicial.Value;
-                DateTime dateFinal = this.dtp_final.Value;
-
-                dateInicial = dateInicial.AddMonths(-1);
-                dateFinal = dateFinal.AddMonths(-1);
-                this.dtp_Inicial.Value = dateInicial;
-                this.dtp_final.Value = dateFinal;
-                disableFiringEvents = false;
-                ActualizarTablas();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btn_mesAdelante_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                disableFiringEvents = true;
-                DateTime dateInicial = this.dtp_Inicial.Value;
-                DateTime dateFinal = this.dtp_final.Value;
-
-                dateInicial = dateInicial.AddMonths(1);
-                dateFinal = dateFinal.AddMonths(1);
-                this.dtp_Inicial.Value = dateInicial;
-                this.dtp_final.Value = dateFinal;
-                disableFiringEvents = false;
-                ActualizarTablas();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                
-            }
-        }
-
-
-
-
         private void btn_CrearCSV_Click(object sender, EventArgs e)
         {
-            string CSV_Content = "";
 
-            CSV_Content += "Descargas Mensuales\r\n";
-            CSV_Content += "Mes,Cantidad de descargas\r\n";
-            foreach (DataGridViewRow row in dgv_lightningByMonth.Rows)
-            {
-                CSV_Content += Convert.ToString(row.Cells[0].Value) + "," + Convert.ToString(row.Cells[1].Value) + "\r\n";
-            }
+            lbl_cargando.Visible = true;
+            lbl_cargando.Text = "Creando CSV";
+            lbl_cargando.BringToFront();
+            lbl_cargando.Update();
+            List<string> CSV_Content = new List<string>();
+            //string CSV_Content = "";
 
-            CSV_Content += "\r\n\r\n\r\n";
-            CSV_Content += "Descargas Diarias\r\n";
-            CSV_Content += "Dia,Cantidad de descargas\r\n";
-            foreach (DataGridViewRow row in dgv_lightningByDay.Rows)
+            CSV_Content.Add("Descargas Diarias");
+            CSV_Content.Add("Fecha,Longitid,Latitud,Amplitud");
+            foreach (DataGridViewRow row in dgv_lightningAll.Rows)
             {
-                CSV_Content += Convert.ToString(row.Cells[0].Value) + "," + Convert.ToString(row.Cells[1].Value) + "\r\n";
+                CSV_Content.Add(Convert.ToString(row.Cells[0].Value) + 
+                            "," + Convert.ToString(row.Cells[1].Value) + 
+                            "," + Convert.ToString(row.Cells[2].Value) +
+                            "," + Convert.ToString(row.Cells[3].Value));
             }
 
             string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
-            string nombreArchivo = NombreCoop + " " + fechaInicial + " - " + fechaFinal;
-
+            string nombreArchivo = NombreCoop + " - " + fechaCSV;
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -593,17 +544,17 @@ namespace LightningStrikes_Conelectricas
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 nombreArchivo = saveFileDialog1.FileName;
-                //System.IO.File.WriteAllLines(nombreArchivo, CSV_Content);
-                System.IO.File.WriteAllText(nombreArchivo, CSV_Content);
+                System.IO.File.WriteAllLines(nombreArchivo, CSV_Content);
+                //System.IO.File.WriteAllText(nombreArchivo, CSV_Content);
                 MessageBox.Show(nombreArchivo + " \n\nCREADO SATISFACTORIAMENTE", "CSV");
             }
 
+            lbl_cargando.Visible = false;
+            lbl_cargando.Text = "Cargando ......";
+            lbl_cargando.Update();
+
         }
 
-        //private void cb_cooperativa_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    ActualizarTablas();
-        //}
 
         private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -651,82 +602,106 @@ namespace LightningStrikes_Conelectricas
 
         }
 
-        private void btn_diaUltimo_Click(object sender, EventArgs e)
-        {
-            disableFiringEvents = true;
-            DateTime dateFinal = DateTime.Today;
-            DateTime dateInicial = DateTime.Today;
-            dateInicial = dateInicial.AddDays(-1);
-            this.dtp_final.Value = dateFinal;
-            this.dtp_Inicial.Value = dateInicial;
-            disableFiringEvents = false;
-            ActualizarTablas();
-        }
-
-        private void btn_diaAtras_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                disableFiringEvents = true;
-                DateTime dateInicial = this.dtp_Inicial.Value;
-                DateTime dateFinal = this.dtp_final.Value;
-
-                dateInicial = dateInicial.AddDays(-1);
-                dateFinal = dateFinal.AddDays(-1);
-                this.dtp_Inicial.Value = dateInicial;
-                this.dtp_final.Value = dateFinal;
-                disableFiringEvents = false;
-                ActualizarTablas();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btn_diaAdelante_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                disableFiringEvents = true;
-                DateTime dateInicial = this.dtp_Inicial.Value;
-                DateTime dateFinal = this.dtp_final.Value;
-
-                dateInicial = dateInicial.AddDays(1);
-                dateFinal = dateFinal.AddDays(1);
-                this.dtp_Inicial.Value = dateInicial;
-                this.dtp_final.Value = dateFinal;
-                disableFiringEvents = false;
-                ActualizarTablas();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
             ActualizarTablas();
         }
 
-        private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1) return;
-            string fecha = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
-            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID);
-            dgv_lightningAll.ClearSelection();
-        }
-
         private void dgv_lightningByMonth_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
+
+            btn_CrearCSV.Enabled = false;
+            btn_crearKMLpoints.Enabled = false;
+            lbl_cargando.Visible = true;
+            lbl_cargando.BringToFront();
+            lbl_cargando.Update();
+
             string fecha = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
             dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fecha, cooperativaID);
             dgv_lightningAll.DataSource = null;
             dgv_lightningByDay.ClearSelection();
+
+            lbl_cargando.Visible = false;
+            lbl_cargando.Update();
         }
 
+        private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
 
+            btn_CrearCSV.Enabled = true;
+            btn_crearKMLpoints.Enabled = true;
+            fechaCSV = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
+            lbl_cargando.Visible = true;
+            lbl_cargando.BringToFront();
+            lbl_cargando.Update();
+
+            string fecha = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            DateTime aa = (DateTime)dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value;
+            fechaCSV = aa.Date.ToString("dd_MM_yyyy");
+            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID);
+            dgv_lightningAll.ClearSelection();
+            dgv_lightningAll.Sort(dgv_lightningAll.Columns[0],ListSortDirection.Ascending);
+
+            lbl_cargando.Visible = false;
+            lbl_cargando.Update();
+        }
+
+        private void btn_crearKMLpoints_Click(object sender, EventArgs e)
+        {
+            lbl_cargando.Visible = true;
+            lbl_cargando.Text = "Creando KML";
+            lbl_cargando.BringToFront();
+            lbl_cargando.Update();
+
+            List<string> lineas = new List<string>();
+
+            lineas.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            lineas.Add("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+            lineas.Add("\t<Document>");
+            lineas.Add("\t\t<open>1</open>");
+            lineas.Add("\t\t<name>" + fechaCSV + "</name>");
+
+            foreach (DataGridViewRow row in dgv_lightningAll.Rows)
+            {
+                lineas.Add("\t\t<Placemark>");
+                lineas.Add("\t\t\t<name>" + Convert.ToString(row.Cells[0].Value) + "</name>");
+                lineas.Add("\t\t\t<description>Amplitud: " + Convert.ToString(row.Cells[3].Value) + "kA</description>");
+                lineas.Add("\t\t\t<Point>");
+                lineas.Add("\t\t\t\t<coordinates>"+ Convert.ToString(row.Cells[1].Value) +","+ Convert.ToString(row.Cells[2].Value) + "</coordinates>");
+                lineas.Add("\t\t\t</Point>");
+                lineas.Add("\t\t</Placemark>");
+            }
+            lineas.Add("\t</Document>");
+            lineas.Add("</kml>");
+
+            string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
+            string nombreArchivo = NombreCoop + " - " + fechaCSV ;
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.FileName = nombreArchivo;
+            saveFileDialog1.CheckFileExists = false;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "kml";
+            saveFileDialog1.Filter = "KML files (*.kml)|*.kml|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                nombreArchivo = saveFileDialog1.FileName;
+                System.IO.File.WriteAllLines(nombreArchivo, lineas);
+                MessageBox.Show(nombreArchivo + " \n\nCREADO SATISFACTORIAMENTE", "KML");
+            }
+
+
+            lbl_cargando.Visible = false;
+            lbl_cargando.Text = "Cargando ......";
+            lbl_cargando.Update();
+        }
     }
 }

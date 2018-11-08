@@ -925,11 +925,13 @@ namespace LightningStrikes_Conelectricas {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class GetAllLightningsDataTable : global::System.Data.TypedTableBase<GetAllLightningsRow> {
             
-            private global::System.Data.DataColumn columnTIME;
+            private global::System.Data.DataColumn columnFecha_Hora;
             
-            private global::System.Data.DataColumn columnLONGITUDE;
+            private global::System.Data.DataColumn columnLongitud;
             
-            private global::System.Data.DataColumn columnLATITUDE;
+            private global::System.Data.DataColumn columnLatitud;
+            
+            private global::System.Data.DataColumn columnAmplitud;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -966,25 +968,33 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TIMEColumn {
+            public global::System.Data.DataColumn Fecha_HoraColumn {
                 get {
-                    return this.columnTIME;
+                    return this.columnFecha_Hora;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LONGITUDEColumn {
+            public global::System.Data.DataColumn LongitudColumn {
                 get {
-                    return this.columnLONGITUDE;
+                    return this.columnLongitud;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LATITUDEColumn {
+            public global::System.Data.DataColumn LatitudColumn {
                 get {
-                    return this.columnLATITUDE;
+                    return this.columnLatitud;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AmplitudColumn {
+                get {
+                    return this.columnAmplitud;
                 }
             }
             
@@ -1025,12 +1035,13 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GetAllLightningsRow AddGetAllLightningsRow(System.DateTime TIME, double LONGITUDE, double LATITUDE) {
+            public GetAllLightningsRow AddGetAllLightningsRow(System.DateTime Fecha_Hora, double Longitud, double Latitud, double Amplitud) {
                 GetAllLightningsRow rowGetAllLightningsRow = ((GetAllLightningsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TIME,
-                        LONGITUDE,
-                        LATITUDE};
+                        Fecha_Hora,
+                        Longitud,
+                        Latitud,
+                        Amplitud};
                 rowGetAllLightningsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetAllLightningsRow);
                 return rowGetAllLightningsRow;
@@ -1053,20 +1064,23 @@ namespace LightningStrikes_Conelectricas {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnTIME = base.Columns["TIME"];
-                this.columnLONGITUDE = base.Columns["LONGITUDE"];
-                this.columnLATITUDE = base.Columns["LATITUDE"];
+                this.columnFecha_Hora = base.Columns["Fecha_Hora"];
+                this.columnLongitud = base.Columns["Longitud"];
+                this.columnLatitud = base.Columns["Latitud"];
+                this.columnAmplitud = base.Columns["Amplitud"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTIME);
-                this.columnLONGITUDE = new global::System.Data.DataColumn("LONGITUDE", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLONGITUDE);
-                this.columnLATITUDE = new global::System.Data.DataColumn("LATITUDE", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLATITUDE);
+                this.columnFecha_Hora = new global::System.Data.DataColumn("Fecha_Hora", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecha_Hora);
+                this.columnLongitud = new global::System.Data.DataColumn("Longitud", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLongitud);
+                this.columnLatitud = new global::System.Data.DataColumn("Latitud", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLatitud);
+                this.columnAmplitud = new global::System.Data.DataColumn("Amplitud", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAmplitud);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1642,86 +1656,114 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime TIME {
+            public System.DateTime Fecha_Hora {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableGetAllLightnings.TIMEColumn]));
+                        return ((global::System.DateTime)(this[this.tableGetAllLightnings.Fecha_HoraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TIME\' in table \'GetAllLightnings\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Fecha_Hora\' in table \'GetAllLightnings\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetAllLightnings.TIMEColumn] = value;
+                    this[this.tableGetAllLightnings.Fecha_HoraColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double LONGITUDE {
+            public double Longitud {
                 get {
                     try {
-                        return ((double)(this[this.tableGetAllLightnings.LONGITUDEColumn]));
+                        return ((double)(this[this.tableGetAllLightnings.LongitudColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LONGITUDE\' in table \'GetAllLightnings\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Longitud\' in table \'GetAllLightnings\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetAllLightnings.LONGITUDEColumn] = value;
+                    this[this.tableGetAllLightnings.LongitudColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double LATITUDE {
+            public double Latitud {
                 get {
                     try {
-                        return ((double)(this[this.tableGetAllLightnings.LATITUDEColumn]));
+                        return ((double)(this[this.tableGetAllLightnings.LatitudColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LATITUDE\' in table \'GetAllLightnings\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Latitud\' in table \'GetAllLightnings\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetAllLightnings.LATITUDEColumn] = value;
+                    this[this.tableGetAllLightnings.LatitudColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTIMENull() {
-                return this.IsNull(this.tableGetAllLightnings.TIMEColumn);
+            public double Amplitud {
+                get {
+                    try {
+                        return ((double)(this[this.tableGetAllLightnings.AmplitudColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Amplitud\' in table \'GetAllLightnings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetAllLightnings.AmplitudColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTIMENull() {
-                this[this.tableGetAllLightnings.TIMEColumn] = global::System.Convert.DBNull;
+            public bool IsFecha_HoraNull() {
+                return this.IsNull(this.tableGetAllLightnings.Fecha_HoraColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLONGITUDENull() {
-                return this.IsNull(this.tableGetAllLightnings.LONGITUDEColumn);
+            public void SetFecha_HoraNull() {
+                this[this.tableGetAllLightnings.Fecha_HoraColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLONGITUDENull() {
-                this[this.tableGetAllLightnings.LONGITUDEColumn] = global::System.Convert.DBNull;
+            public bool IsLongitudNull() {
+                return this.IsNull(this.tableGetAllLightnings.LongitudColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLATITUDENull() {
-                return this.IsNull(this.tableGetAllLightnings.LATITUDEColumn);
+            public void SetLongitudNull() {
+                this[this.tableGetAllLightnings.LongitudColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLATITUDENull() {
-                this[this.tableGetAllLightnings.LATITUDEColumn] = global::System.Convert.DBNull;
+            public bool IsLatitudNull() {
+                return this.IsNull(this.tableGetAllLightnings.LatitudColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetLatitudNull() {
+                this[this.tableGetAllLightnings.LatitudColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAmplitudNull() {
+                return this.IsNull(this.tableGetAllLightnings.AmplitudColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAmplitudNull() {
+                this[this.tableGetAllLightnings.AmplitudColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2398,9 +2440,10 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GetAllLightnings";
-            tableMapping.ColumnMappings.Add("TIME", "TIME");
-            tableMapping.ColumnMappings.Add("LONGITUDE", "LONGITUDE");
-            tableMapping.ColumnMappings.Add("LATITUDE", "LATITUDE");
+            tableMapping.ColumnMappings.Add("Fecha_Hora", "Fecha_Hora");
+            tableMapping.ColumnMappings.Add("Longitud", "Longitud");
+            tableMapping.ColumnMappings.Add("Latitud", "Latitud");
+            tableMapping.ColumnMappings.Add("Amplitud", "Amplitud");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

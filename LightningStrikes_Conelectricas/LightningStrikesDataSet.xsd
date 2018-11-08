@@ -66,9 +66,10 @@
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="TIME" DataSetColumn="TIME" />
-              <Mapping SourceColumn="LONGITUDE" DataSetColumn="LONGITUDE" />
-              <Mapping SourceColumn="LATITUDE" DataSetColumn="LATITUDE" />
+              <Mapping SourceColumn="Fecha_Hora" DataSetColumn="Fecha_Hora" />
+              <Mapping SourceColumn="Longitud" DataSetColumn="Longitud" />
+              <Mapping SourceColumn="Latitud" DataSetColumn="Latitud" />
+              <Mapping SourceColumn="Amplitud" DataSetColumn="Amplitud" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -136,9 +137,10 @@
         <xs:element name="GetAllLightnings" msprop:Generator_TableClassName="GetAllLightningsDataTable" msprop:Generator_TableVarName="tableGetAllLightnings" msprop:Generator_TablePropName="GetAllLightnings" msprop:Generator_RowDeletingName="GetAllLightningsRowDeleting" msprop:Generator_RowChangingName="GetAllLightningsRowChanging" msprop:Generator_RowEvHandlerName="GetAllLightningsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllLightningsRowDeleted" msprop:Generator_UserTableName="GetAllLightnings" msprop:Generator_RowChangedName="GetAllLightningsRowChanged" msprop:Generator_RowEvArgName="GetAllLightningsRowChangeEvent" msprop:Generator_RowClassName="GetAllLightningsRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" msprop:Generator_UserColumnName="TIME" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="LONGITUDE" msprop:Generator_ColumnVarNameInTable="columnLONGITUDE" msprop:Generator_ColumnPropNameInRow="LONGITUDE" msprop:Generator_ColumnPropNameInTable="LONGITUDEColumn" msprop:Generator_UserColumnName="LONGITUDE" type="xs:double" minOccurs="0" />
-              <xs:element name="LATITUDE" msprop:Generator_ColumnVarNameInTable="columnLATITUDE" msprop:Generator_ColumnPropNameInRow="LATITUDE" msprop:Generator_ColumnPropNameInTable="LATITUDEColumn" msprop:Generator_UserColumnName="LATITUDE" type="xs:double" minOccurs="0" />
+              <xs:element name="Fecha_Hora" msprop:Generator_ColumnVarNameInTable="columnFecha_Hora" msprop:Generator_ColumnPropNameInRow="Fecha_Hora" msprop:Generator_ColumnPropNameInTable="Fecha_HoraColumn" msprop:Generator_UserColumnName="Fecha_Hora" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Longitud" msprop:Generator_ColumnVarNameInTable="columnLongitud" msprop:Generator_ColumnPropNameInRow="Longitud" msprop:Generator_ColumnPropNameInTable="LongitudColumn" msprop:Generator_UserColumnName="Longitud" type="xs:double" minOccurs="0" />
+              <xs:element name="Latitud" msprop:Generator_ColumnVarNameInTable="columnLatitud" msprop:Generator_ColumnPropNameInRow="Latitud" msprop:Generator_ColumnPropNameInTable="LatitudColumn" msprop:Generator_UserColumnName="Latitud" type="xs:double" minOccurs="0" />
+              <xs:element name="Amplitud" msprop:Generator_ColumnVarNameInTable="columnAmplitud" msprop:Generator_ColumnPropNameInRow="Amplitud" msprop:Generator_ColumnPropNameInTable="AmplitudColumn" msprop:Generator_UserColumnName="Amplitud" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
