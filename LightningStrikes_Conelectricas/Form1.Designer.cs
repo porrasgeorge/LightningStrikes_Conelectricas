@@ -38,58 +38,64 @@
             this.cb_cooperativa = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_lightning1 = new System.Windows.Forms.DataGridView();
+            this.cantidadDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.latitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.longitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.getLightningsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lightningStrikesDataSet = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
             this.btn_createKML = new System.Windows.Forms.Button();
             this.Check3D = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgv_lightningByDay = new System.Windows.Forms.DataGridView();
+            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countLightningsByDayBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_CrearCSV = new System.Windows.Forms.Button();
             this.lbl_cargando = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel_fechas = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel_datos = new System.Windows.Forms.Panel();
             this.btn_crearKMLpoints = new System.Windows.Forms.Button();
             this.dgv_lightningAll = new System.Windows.Forms.DataGridView();
-            this.dgv_lightningByMonth = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.countLightningsByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lightningStrikesDataSet = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
-            this.countLightningsByDayBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cantidadDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.getLightningsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.countLightningsByDayTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByDayTableAdapter();
-            this.getLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetLightningsTableAdapter();
-            this.lightningStrikesDataSet1 = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
-            this.countLightningsByMonthTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByMonthTableAdapter();
-            this.getAllLightningsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.getAllLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetAllLightningsTableAdapter();
             this.fechaHoraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.longitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.latitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amplitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.getAllLightningsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dgv_lightningByMonth = new System.Windows.Forms.DataGridView();
             this.mesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countLightningsByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.countLightningsByDayTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByDayTableAdapter();
+            this.getLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetLightningsTableAdapter();
+            this.lightningStrikesDataSet1 = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
+            this.countLightningsByMonthTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByMonthTableAdapter();
+            this.getAllLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetAllLightningsTableAdapter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.chb_ActualizarDesdeTablas = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightning1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).BeginInit();
             this.panel_fechas.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel_datos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getAllLightningsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countLightningsByMonthBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getAllLightningsBindingSource)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -175,19 +181,50 @@
             this.latitudDataGridViewTextBoxColumn,
             this.longitudDataGridViewTextBoxColumn});
             this.dgv_lightning1.DataSource = this.getLightningsBindingSource;
-            this.dgv_lightning1.Location = new System.Drawing.Point(811, 124);
+            this.dgv_lightning1.Location = new System.Drawing.Point(24, 47);
             this.dgv_lightning1.Name = "dgv_lightning1";
             this.dgv_lightning1.ReadOnly = true;
             this.dgv_lightning1.RowHeadersVisible = false;
             this.dgv_lightning1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightning1.Size = new System.Drawing.Size(346, 558);
+            this.dgv_lightning1.Size = new System.Drawing.Size(346, 398);
             this.dgv_lightning1.TabIndex = 7;
+            // 
+            // cantidadDataGridViewTextBoxColumn1
+            // 
+            this.cantidadDataGridViewTextBoxColumn1.DataPropertyName = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn1.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn1.Name = "cantidadDataGridViewTextBoxColumn1";
+            this.cantidadDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // latitudDataGridViewTextBoxColumn
+            // 
+            this.latitudDataGridViewTextBoxColumn.DataPropertyName = "Latitud";
+            this.latitudDataGridViewTextBoxColumn.HeaderText = "Latitud";
+            this.latitudDataGridViewTextBoxColumn.Name = "latitudDataGridViewTextBoxColumn";
+            this.latitudDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // longitudDataGridViewTextBoxColumn
+            // 
+            this.longitudDataGridViewTextBoxColumn.DataPropertyName = "Longitud";
+            this.longitudDataGridViewTextBoxColumn.HeaderText = "Longitud";
+            this.longitudDataGridViewTextBoxColumn.Name = "longitudDataGridViewTextBoxColumn";
+            this.longitudDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // getLightningsBindingSource
+            // 
+            this.getLightningsBindingSource.DataMember = "GetLightnings";
+            this.getLightningsBindingSource.DataSource = this.lightningStrikesDataSet;
+            // 
+            // lightningStrikesDataSet
+            // 
+            this.lightningStrikesDataSet.DataSetName = "LightningStrikesDataSet";
+            this.lightningStrikesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btn_createKML
             // 
-            this.btn_createKML.Location = new System.Drawing.Point(823, 703);
+            this.btn_createKML.Location = new System.Drawing.Point(56, 460);
             this.btn_createKML.Name = "btn_createKML";
-            this.btn_createKML.Size = new System.Drawing.Size(334, 34);
+            this.btn_createKML.Size = new System.Drawing.Size(314, 34);
             this.btn_createKML.TabIndex = 8;
             this.btn_createKML.Text = "Crear KML";
             this.btn_createKML.UseVisualStyleBackColor = true;
@@ -198,7 +235,7 @@
             this.Check3D.AutoSize = true;
             this.Check3D.Checked = true;
             this.Check3D.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Check3D.Location = new System.Drawing.Point(802, 723);
+            this.Check3D.Location = new System.Drawing.Point(24, 476);
             this.Check3D.Name = "Check3D";
             this.Check3D.Size = new System.Drawing.Size(15, 14);
             this.Check3D.TabIndex = 9;
@@ -208,7 +245,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(799, 707);
+            this.label4.Location = new System.Drawing.Point(21, 460);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 14;
@@ -230,13 +267,34 @@
             this.dgv_lightningByDay.ReadOnly = true;
             this.dgv_lightningByDay.RowHeadersVisible = false;
             this.dgv_lightningByDay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningByDay.Size = new System.Drawing.Size(164, 420);
+            this.dgv_lightningByDay.Size = new System.Drawing.Size(164, 492);
             this.dgv_lightningByDay.TabIndex = 18;
             this.dgv_lightningByDay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByDay_CellClick);
             // 
+            // fechaDataGridViewTextBoxColumn
+            // 
+            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+            this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fechaDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // cantidadDataGridViewTextBoxColumn2
+            // 
+            this.cantidadDataGridViewTextBoxColumn2.DataPropertyName = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn2.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn2.Name = "cantidadDataGridViewTextBoxColumn2";
+            this.cantidadDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.cantidadDataGridViewTextBoxColumn2.Width = 60;
+            // 
+            // countLightningsByDayBindingSource
+            // 
+            this.countLightningsByDayBindingSource.DataMember = "CountLightningsByDay";
+            this.countLightningsByDayBindingSource.DataSource = this.lightningStrikesDataSet;
+            // 
             // btn_CrearCSV
             // 
-            this.btn_CrearCSV.Location = new System.Drawing.Point(397, 483);
+            this.btn_CrearCSV.Location = new System.Drawing.Point(397, 515);
             this.btn_CrearCSV.Name = "btn_CrearCSV";
             this.btn_CrearCSV.Size = new System.Drawing.Size(147, 34);
             this.btn_CrearCSV.TabIndex = 19;
@@ -281,12 +339,38 @@
             // panel_fechas
             // 
             this.panel_fechas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_fechas.Controls.Add(this.panel4);
+            this.panel_fechas.Controls.Add(this.panel2);
             this.panel_fechas.Controls.Add(this.panel3);
+            this.panel_fechas.Controls.Add(this.panel_datos);
             this.panel_fechas.Controls.Add(this.panel1);
             this.panel_fechas.Location = new System.Drawing.Point(16, 120);
             this.panel_fechas.Name = "panel_fechas";
-            this.panel_fechas.Size = new System.Drawing.Size(755, 78);
+            this.panel_fechas.Size = new System.Drawing.Size(1149, 637);
             this.panel_fechas.TabIndex = 24;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.dgv_lightning1);
+            this.panel2.Controls.Add(this.btn_createKML);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.Check3D);
+            this.panel2.Location = new System.Drawing.Point(764, 79);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(379, 554);
+            this.panel2.TabIndex = 26;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(20, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(184, 20);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Descargas por ubicación";
             // 
             // panel3
             // 
@@ -297,18 +381,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(237, 69);
             this.panel3.TabIndex = 26;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dtp_Inicial);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dtp_final);
-            this.panel1.Location = new System.Drawing.Point(29, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 69);
-            this.panel1.TabIndex = 26;
             // 
             // panel_datos
             // 
@@ -322,16 +394,16 @@
             this.panel_datos.Controls.Add(this.label5);
             this.panel_datos.Controls.Add(this.lbl_cargando);
             this.panel_datos.Controls.Add(this.btn_CrearCSV);
-            this.panel_datos.Location = new System.Drawing.Point(16, 204);
+            this.panel_datos.Location = new System.Drawing.Point(3, 79);
             this.panel_datos.Name = "panel_datos";
             this.panel_datos.Size = new System.Drawing.Size(755, 554);
             this.panel_datos.TabIndex = 25;
             // 
             // btn_crearKMLpoints
             // 
-            this.btn_crearKMLpoints.Location = new System.Drawing.Point(617, 483);
+            this.btn_crearKMLpoints.Location = new System.Drawing.Point(587, 515);
             this.btn_crearKMLpoints.Name = "btn_crearKMLpoints";
-            this.btn_crearKMLpoints.Size = new System.Drawing.Size(117, 34);
+            this.btn_crearKMLpoints.Size = new System.Drawing.Size(147, 34);
             this.btn_crearKMLpoints.TabIndex = 27;
             this.btn_crearKMLpoints.Text = "Crear KML";
             this.btn_crearKMLpoints.UseVisualStyleBackColor = true;
@@ -355,106 +427,8 @@
             this.dgv_lightningAll.ReadOnly = true;
             this.dgv_lightningAll.RowHeadersVisible = false;
             this.dgv_lightningAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningAll.Size = new System.Drawing.Size(337, 420);
+            this.dgv_lightningAll.Size = new System.Drawing.Size(337, 452);
             this.dgv_lightningAll.TabIndex = 26;
-            // 
-            // dgv_lightningByMonth
-            // 
-            this.dgv_lightningByMonth.AllowUserToAddRows = false;
-            this.dgv_lightningByMonth.AllowUserToDeleteRows = false;
-            this.dgv_lightningByMonth.AutoGenerateColumns = false;
-            this.dgv_lightningByMonth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_lightningByMonth.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mesDataGridViewTextBoxColumn,
-            this.cantidadDataGridViewTextBoxColumn});
-            this.dgv_lightningByMonth.DataSource = this.countLightningsByMonthBindingSource;
-            this.dgv_lightningByMonth.Location = new System.Drawing.Point(16, 57);
-            this.dgv_lightningByMonth.MultiSelect = false;
-            this.dgv_lightningByMonth.Name = "dgv_lightningByMonth";
-            this.dgv_lightningByMonth.ReadOnly = true;
-            this.dgv_lightningByMonth.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgv_lightningByMonth.RowHeadersVisible = false;
-            this.dgv_lightningByMonth.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningByMonth.Size = new System.Drawing.Size(150, 420);
-            this.dgv_lightningByMonth.TabIndex = 23;
-            this.dgv_lightningByMonth.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByMonth_CellClick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 23);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(167, 20);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Descargas mensuales";
-            // 
-            // countLightningsByMonthBindingSource
-            // 
-            this.countLightningsByMonthBindingSource.DataMember = "CountLightningsByMonth";
-            this.countLightningsByMonthBindingSource.DataSource = this.lightningStrikesDataSet;
-            // 
-            // lightningStrikesDataSet
-            // 
-            this.lightningStrikesDataSet.DataSetName = "LightningStrikesDataSet";
-            this.lightningStrikesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // countLightningsByDayBindingSource
-            // 
-            this.countLightningsByDayBindingSource.DataMember = "CountLightningsByDay";
-            this.countLightningsByDayBindingSource.DataSource = this.lightningStrikesDataSet;
-            // 
-            // cantidadDataGridViewTextBoxColumn1
-            // 
-            this.cantidadDataGridViewTextBoxColumn1.DataPropertyName = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn1.HeaderText = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn1.Name = "cantidadDataGridViewTextBoxColumn1";
-            this.cantidadDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // latitudDataGridViewTextBoxColumn
-            // 
-            this.latitudDataGridViewTextBoxColumn.DataPropertyName = "Latitud";
-            this.latitudDataGridViewTextBoxColumn.HeaderText = "Latitud";
-            this.latitudDataGridViewTextBoxColumn.Name = "latitudDataGridViewTextBoxColumn";
-            this.latitudDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // longitudDataGridViewTextBoxColumn
-            // 
-            this.longitudDataGridViewTextBoxColumn.DataPropertyName = "Longitud";
-            this.longitudDataGridViewTextBoxColumn.HeaderText = "Longitud";
-            this.longitudDataGridViewTextBoxColumn.Name = "longitudDataGridViewTextBoxColumn";
-            this.longitudDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // getLightningsBindingSource
-            // 
-            this.getLightningsBindingSource.DataMember = "GetLightnings";
-            this.getLightningsBindingSource.DataSource = this.lightningStrikesDataSet;
-            // 
-            // countLightningsByDayTableAdapter
-            // 
-            this.countLightningsByDayTableAdapter.ClearBeforeFill = true;
-            // 
-            // getLightningsTableAdapter
-            // 
-            this.getLightningsTableAdapter.ClearBeforeFill = true;
-            // 
-            // lightningStrikesDataSet1
-            // 
-            this.lightningStrikesDataSet1.DataSetName = "LightningStrikesDataSet";
-            this.lightningStrikesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // countLightningsByMonthTableAdapter
-            // 
-            this.countLightningsByMonthTableAdapter.ClearBeforeFill = true;
-            // 
-            // getAllLightningsBindingSource
-            // 
-            this.getAllLightningsBindingSource.DataMember = "GetAllLightnings";
-            this.getAllLightningsBindingSource.DataSource = this.lightningStrikesDataSet;
-            // 
-            // getAllLightningsTableAdapter
-            // 
-            this.getAllLightningsTableAdapter.ClearBeforeFill = true;
             // 
             // fechaHoraDataGridViewTextBoxColumn
             // 
@@ -488,6 +462,32 @@
             this.amplitudDataGridViewTextBoxColumn.ReadOnly = true;
             this.amplitudDataGridViewTextBoxColumn.Width = 50;
             // 
+            // getAllLightningsBindingSource
+            // 
+            this.getAllLightningsBindingSource.DataMember = "GetAllLightnings";
+            this.getAllLightningsBindingSource.DataSource = this.lightningStrikesDataSet;
+            // 
+            // dgv_lightningByMonth
+            // 
+            this.dgv_lightningByMonth.AllowUserToAddRows = false;
+            this.dgv_lightningByMonth.AllowUserToDeleteRows = false;
+            this.dgv_lightningByMonth.AutoGenerateColumns = false;
+            this.dgv_lightningByMonth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_lightningByMonth.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mesDataGridViewTextBoxColumn,
+            this.cantidadDataGridViewTextBoxColumn});
+            this.dgv_lightningByMonth.DataSource = this.countLightningsByMonthBindingSource;
+            this.dgv_lightningByMonth.Location = new System.Drawing.Point(16, 57);
+            this.dgv_lightningByMonth.MultiSelect = false;
+            this.dgv_lightningByMonth.Name = "dgv_lightningByMonth";
+            this.dgv_lightningByMonth.ReadOnly = true;
+            this.dgv_lightningByMonth.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_lightningByMonth.RowHeadersVisible = false;
+            this.dgv_lightningByMonth.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_lightningByMonth.Size = new System.Drawing.Size(150, 492);
+            this.dgv_lightningByMonth.TabIndex = 23;
+            this.dgv_lightningByMonth.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByMonth_CellClick);
+            // 
             // mesDataGridViewTextBoxColumn
             // 
             this.mesDataGridViewTextBoxColumn.DataPropertyName = "Mes";
@@ -504,34 +504,81 @@
             this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
             this.cantidadDataGridViewTextBoxColumn.Width = 60;
             // 
-            // fechaDataGridViewTextBoxColumn
+            // countLightningsByMonthBindingSource
             // 
-            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-            this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fechaDataGridViewTextBoxColumn.Width = 70;
+            this.countLightningsByMonthBindingSource.DataMember = "CountLightningsByMonth";
+            this.countLightningsByMonthBindingSource.DataSource = this.lightningStrikesDataSet;
             // 
-            // cantidadDataGridViewTextBoxColumn2
+            // label7
             // 
-            this.cantidadDataGridViewTextBoxColumn2.DataPropertyName = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn2.HeaderText = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn2.Name = "cantidadDataGridViewTextBoxColumn2";
-            this.cantidadDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.cantidadDataGridViewTextBoxColumn2.Width = 60;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(167, 20);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Descargas mensuales";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dtp_Inicial);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dtp_final);
+            this.panel1.Location = new System.Drawing.Point(3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(422, 69);
+            this.panel1.TabIndex = 26;
+            // 
+            // countLightningsByDayTableAdapter
+            // 
+            this.countLightningsByDayTableAdapter.ClearBeforeFill = true;
+            // 
+            // getLightningsTableAdapter
+            // 
+            this.getLightningsTableAdapter.ClearBeforeFill = true;
+            // 
+            // lightningStrikesDataSet1
+            // 
+            this.lightningStrikesDataSet1.DataSetName = "LightningStrikesDataSet";
+            this.lightningStrikesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // countLightningsByMonthTableAdapter
+            // 
+            this.countLightningsByMonthTableAdapter.ClearBeforeFill = true;
+            // 
+            // getAllLightningsTableAdapter
+            // 
+            this.getAllLightningsTableAdapter.ClearBeforeFill = true;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.chb_ActualizarDesdeTablas);
+            this.panel4.Location = new System.Drawing.Point(764, 5);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(379, 68);
+            this.panel4.TabIndex = 27;
+            // 
+            // chb_ActualizarDesdeTablas
+            // 
+            this.chb_ActualizarDesdeTablas.AutoSize = true;
+            this.chb_ActualizarDesdeTablas.Location = new System.Drawing.Point(38, 31);
+            this.chb_ActualizarDesdeTablas.Name = "chb_ActualizarDesdeTablas";
+            this.chb_ActualizarDesdeTablas.Size = new System.Drawing.Size(135, 17);
+            this.chb_ActualizarDesdeTablas.TabIndex = 0;
+            this.chb_ActualizarDesdeTablas.Text = "Actualizar desde tablas";
+            this.chb_ActualizarDesdeTablas.UseVisualStyleBackColor = true;
+            this.chb_ActualizarDesdeTablas.CheckedChanged += new System.EventHandler(this.chb_ActualizarDesdeTablas_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1211, 769);
-            this.Controls.Add(this.panel_datos);
+            this.ClientSize = new System.Drawing.Size(1482, 769);
             this.Controls.Add(this.panel_fechas);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dgv_lightning1);
-            this.Controls.Add(this.btn_createKML);
-            this.Controls.Add(this.Check3D);
-            this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -540,24 +587,27 @@
             this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightning1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).EndInit();
             this.panel_fechas.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel_datos.ResumeLayout(false);
             this.panel_datos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getAllLightningsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningByMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countLightningsByMonthBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countLightningsByDayBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lightningStrikesDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getAllLightningsBindingSource)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -608,6 +658,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox chb_ActualizarDesdeTablas;
     }
 }
 

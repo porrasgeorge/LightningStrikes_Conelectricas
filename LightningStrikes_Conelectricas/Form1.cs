@@ -665,16 +665,64 @@ namespace LightningStrikes_Conelectricas
             lineas.Add("\t\t<open>1</open>");
             lineas.Add("\t\t<name>" + fechaCSV + "</name>");
 
-            lineas.Add("\t\t<Style id=\"noTag\">");
+            lineas.Add("\t\t<Style id=\"Rojo\">");
             lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Rosado\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/pink-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Amarillo\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Celeste\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ltblu-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Blanco\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
             lineas.Add("\t\t</Style>");
 
             foreach (DataGridViewRow row in dgv_lightningAll.Rows)
             {
+                Double Ampl = Convert.ToDouble(row.Cells[3].Value.ToString());
+
                 lineas.Add("\t\t<Placemark>");
                 lineas.Add("\t\t\t<name>" + Convert.ToString(row.Cells[0].Value) + "</name>");
-                lineas.Add("\t\t\t\t<styleUrl>#noTag</styleUrl>");
-                lineas.Add("\t\t\t<description>Amplitud: " + Convert.ToString(row.Cells[3].Value) + "kA</description>");
+                if (Math.Abs(Ampl) > 80)
+                    lineas.Add("\t\t\t\t<styleUrl>#Rojo</styleUrl>");
+                else if (Math.Abs(Ampl) > 50)
+                    lineas.Add("\t\t\t\t<styleUrl>#Rosado</styleUrl>");
+                else if (Math.Abs(Ampl) > 35)
+                    lineas.Add("\t\t\t\t<styleUrl>#Amarillo</styleUrl>");
+                else if (Math.Abs(Ampl) > 20)
+                    lineas.Add("\t\t\t\t<styleUrl>#Celeste</styleUrl>");
+                else
+                    lineas.Add("\t\t\t\t<styleUrl>#Blanco</styleUrl>");
+
+                lineas.Add("\t\t\t<description>Amplitud: " + Convert.ToString(Ampl) + "kA</description>");
                 lineas.Add("\t\t\t<Point>");
                 lineas.Add("\t\t\t\t<coordinates>"+ Convert.ToString(row.Cells[1].Value) +","+ Convert.ToString(row.Cells[2].Value) + "</coordinates>");
                 lineas.Add("\t\t\t</Point>");
@@ -707,6 +755,11 @@ namespace LightningStrikes_Conelectricas
             lbl_cargando.Visible = false;
             lbl_cargando.Text = "Cargando ......";
             lbl_cargando.Update();
+        }
+
+        private void chb_ActualizarDesdeTablas_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
