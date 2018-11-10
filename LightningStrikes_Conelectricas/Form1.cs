@@ -13,9 +13,9 @@ namespace LightningStrikes_Conelectricas
 {
     public partial class Form1 : Form
     {
-        string fechaInicial;
+        DateTime fechaInicial;
         string fechaCSV = "";
-        string fechaFinal;
+        DateTime fechaFinal;
         int cooperativaID;
         bool disableFiringEvents = false;
 
@@ -73,10 +73,6 @@ namespace LightningStrikes_Conelectricas
             
 
         }
-
-
-
-
 
         private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -154,8 +150,8 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoZonas.Update();
             try
             {
-                fechaInicial = this.dtp_Inicial.Value.ToString("yyyy-MM-dd");
-                fechaFinal = this.dtp_final.Value.ToString("yyyy-MM-dd");
+                fechaInicial = this.dtp_Inicial.Value;
+                fechaFinal = this.dtp_final.Value;
 
                 dgv_lightningZones.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
                 dgv_lightningByMonth.ClearSelection();
@@ -191,7 +187,7 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
 
-            string fecha = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
+            DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
             dgv_lightningByDay.DataSource = this.countLightningsByDayTableAdapter.GetData(fecha, cooperativaID);
             dgv_lightningAll.DataSource = null;
             dgv_lightningByDay.ClearSelection();
@@ -211,10 +207,8 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
 
-            string fecha = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-            DateTime aa = (DateTime)dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value;
-            fechaCSV = aa.Date.ToString("dd_MM_yyyy");
+            DateTime fecha = (DateTime)dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value;
+            fechaCSV = fecha.Date.ToString("dd_MM_yyyy");
             dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID);
             dgv_lightningAll.ClearSelection();
             dgv_lightningAll.Sort(dgv_lightningAll.Columns[0],ListSortDirection.Ascending);
@@ -808,11 +802,11 @@ namespace LightningStrikes_Conelectricas
                     str3D = "3D";
                 else
                     str3D = "2D";
-                string nombreArchivo = NombreCoop + " " + fechaInicial + " - " + fechaFinal + "_" + str3D;
+                string nombreArchivo = NombreCoop + " " + fechaInicial.ToString("ddMMyyyy") + "-" + fechaFinal.ToString("ddMMyyyy") + "_" + str3D;
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                saveFileDialog1.Title = "Save text Files";
+                saveFileDialog1.Title = "Guardar Archivo";
                 saveFileDialog1.FileName = nombreArchivo;
                 saveFileDialog1.CheckFileExists = false;
                 saveFileDialog1.CheckPathExists = true;
@@ -852,7 +846,7 @@ namespace LightningStrikes_Conelectricas
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.Title = "Guardar Archivo";
             saveFileDialog1.FileName = nombreArchivo;
             saveFileDialog1.CheckFileExists = false;
             saveFileDialog1.CheckPathExists = true;
