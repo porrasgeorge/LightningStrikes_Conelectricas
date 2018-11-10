@@ -653,6 +653,10 @@ namespace LightningStrikes_Conelectricas {
             
             private global::System.Data.DataColumn columnLongitud;
             
+            private global::System.Data.DataColumn columnAVG_Amp;
+            
+            private global::System.Data.DataColumn columnMAX_Amp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public GetLightningsDataTable() {
@@ -712,6 +716,22 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AVG_AmpColumn {
+                get {
+                    return this.columnAVG_Amp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MAX_AmpColumn {
+                get {
+                    return this.columnMAX_Amp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -747,12 +767,14 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GetLightningsRow AddGetLightningsRow(int Cantidad, double Latitud, double Longitud) {
+            public GetLightningsRow AddGetLightningsRow(int Cantidad, double Latitud, double Longitud, double AVG_Amp, double MAX_Amp) {
                 GetLightningsRow rowGetLightningsRow = ((GetLightningsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Cantidad,
                         Latitud,
-                        Longitud};
+                        Longitud,
+                        AVG_Amp,
+                        MAX_Amp};
                 rowGetLightningsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetLightningsRow);
                 return rowGetLightningsRow;
@@ -778,6 +800,8 @@ namespace LightningStrikes_Conelectricas {
                 this.columnCantidad = base.Columns["Cantidad"];
                 this.columnLatitud = base.Columns["Latitud"];
                 this.columnLongitud = base.Columns["Longitud"];
+                this.columnAVG_Amp = base.Columns["AVG_Amp"];
+                this.columnMAX_Amp = base.Columns["MAX_Amp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -789,9 +813,15 @@ namespace LightningStrikes_Conelectricas {
                 base.Columns.Add(this.columnLatitud);
                 this.columnLongitud = new global::System.Data.DataColumn("Longitud", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLongitud);
+                this.columnAVG_Amp = new global::System.Data.DataColumn("AVG_Amp", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAVG_Amp);
+                this.columnMAX_Amp = new global::System.Data.DataColumn("MAX_Amp", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMAX_Amp);
                 this.columnCantidad.ReadOnly = true;
                 this.columnLatitud.ReadOnly = true;
                 this.columnLongitud.ReadOnly = true;
+                this.columnAVG_Amp.ReadOnly = true;
+                this.columnMAX_Amp.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1605,6 +1635,38 @@ namespace LightningStrikes_Conelectricas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double AVG_Amp {
+                get {
+                    try {
+                        return ((double)(this[this.tableGetLightnings.AVG_AmpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AVG_Amp\' in table \'GetLightnings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetLightnings.AVG_AmpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double MAX_Amp {
+                get {
+                    try {
+                        return ((double)(this[this.tableGetLightnings.MAX_AmpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MAX_Amp\' in table \'GetLightnings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetLightnings.MAX_AmpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCantidadNull() {
                 return this.IsNull(this.tableGetLightnings.CantidadColumn);
             }
@@ -1637,6 +1699,30 @@ namespace LightningStrikes_Conelectricas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetLongitudNull() {
                 this[this.tableGetLightnings.LongitudColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAVG_AmpNull() {
+                return this.IsNull(this.tableGetLightnings.AVG_AmpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAVG_AmpNull() {
+                this[this.tableGetLightnings.AVG_AmpColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMAX_AmpNull() {
+                return this.IsNull(this.tableGetLightnings.MAX_AmpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMAX_AmpNull() {
+                this[this.tableGetLightnings.MAX_AmpColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2272,6 +2358,8 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
             tableMapping.ColumnMappings.Add("Latitud", "Latitud");
             tableMapping.ColumnMappings.Add("Longitud", "Longitud");
+            tableMapping.ColumnMappings.Add("AVG_Amp", "AVG_Amp");
+            tableMapping.ColumnMappings.Add("MAX_Amp", "MAX_Amp");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2292,6 +2380,7 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicial", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFinal", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cooperativa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2299,7 +2388,7 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LightningStrikesDataSet.GetLightningsDataTable GetData(string FechaInicial, global::System.Nullable<int> Cooperativa) {
+        public virtual LightningStrikesDataSet.GetLightningsDataTable GetData(string FechaInicial, string FechaFinal, global::System.Nullable<int> Cooperativa) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((FechaInicial == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -2307,11 +2396,17 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FechaInicial));
             }
-            if ((Cooperativa.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Cooperativa.Value));
+            if ((FechaFinal == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FechaFinal));
+            }
+            if ((Cooperativa.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(Cooperativa.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             LightningStrikesDataSet.GetLightningsDataTable dataTable = new LightningStrikesDataSet.GetLightningsDataTable();
             this.Adapter.Fill(dataTable);
@@ -2633,8 +2728,6 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             this._commandCollection[0].CommandText = "dbo.CountLightningsByMonth";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicial", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFinal", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cooperativa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2642,25 +2735,13 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LightningStrikesDataSet.CountLightningsByMonthDataTable GetData(string FechaInicial, string FechaFinal, global::System.Nullable<int> Cooperativa) {
+        public virtual LightningStrikesDataSet.CountLightningsByMonthDataTable GetData(global::System.Nullable<int> Cooperativa) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((FechaInicial == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FechaInicial));
-            }
-            if ((FechaFinal == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FechaFinal));
-            }
             if ((Cooperativa.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(Cooperativa.Value));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Cooperativa.Value));
             }
             else {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             LightningStrikesDataSet.CountLightningsByMonthDataTable dataTable = new LightningStrikesDataSet.CountLightningsByMonthDataTable();
             this.Adapter.Fill(dataTable);
