@@ -118,6 +118,12 @@ namespace LightningStrikes_Conelectricas
             CrearKMLporDescargas(3); //por amplitud promedio
         }
 
+        private void btn_KML_MAX_Click(object sender, EventArgs e)
+        {
+            dgv_lightningZones.Sort(dgv_lightningZones.Columns[4], ListSortDirection.Descending);
+            CrearKMLporDescargas(4); //por amplitud promedio
+        }
+
         private void ActualizarTablasFechas()
         {
             lbl_cargandoFechas.Visible = true;
@@ -517,6 +523,7 @@ namespace LightningStrikes_Conelectricas
                     if (IntConvertido)
                     {
                         lineas.Add("\t\t\t<Placemark>");
+                        lineas.Add("\t\t\t\t<visibility>0</visibility>");
                         lineas.Add("\t\t\t\t<name>" + Convert.ToString(ValorGraficar) + " - " + Convert.ToString(ContFila) + "</name>");
                         lineas.Add("\t\t\t\t<description>");
                         lineas.Add("\t\t\t\t\tNumero de Descargas: " + Convert.ToString(numDescargas) + "\r\n" +
@@ -594,6 +601,7 @@ namespace LightningStrikes_Conelectricas
                     if (IntConvertido)
                     {
                         lineas.Add("\t\t\t<Placemark>");
+                        lineas.Add("\t\t\t\t<visibility>0</visibility>");
                         lineas.Add("\t\t\t\t<name>" + Convert.ToString(ValorGraficar) + " - " + Convert.ToString(ContFila) + "</name>");
                         lineas.Add("\t\t\t\t<description>");
                         lineas.Add("\t\t\t\t\tNumero de Descargas: " + Convert.ToString(numDescargas) + "\r\n" +
@@ -670,6 +678,7 @@ namespace LightningStrikes_Conelectricas
                     if (IntConvertido)
                     {
                         lineas.Add("\t\t\t<Placemark>");
+                        lineas.Add("\t\t\t\t<visibility>0</visibility>");
                         lineas.Add("\t\t\t\t<name>" + Convert.ToString(ValorGraficar) + " - " + Convert.ToString(ContFila) + "</name>");
                         lineas.Add("\t\t\t\t<description>");
                         lineas.Add("\t\t\t\t\tNumero de Descargas: " + Convert.ToString(numDescargas) + "\r\n" +
@@ -744,6 +753,7 @@ namespace LightningStrikes_Conelectricas
                     if (IntConvertido)
                     {
                         lineas.Add("\t\t\t<Placemark>");
+                        lineas.Add("\t\t\t\t<visibility>0</visibility>");
                         lineas.Add("\t\t\t\t<name>" + Convert.ToString(ValorGraficar) + " - " + Convert.ToString(ContFila) + "</name>");
                         lineas.Add("\t\t\t\t<description>");
                         lineas.Add("\t\t\t\t\tNumero de Descargas: " + Convert.ToString(numDescargas) + "\r\n" +

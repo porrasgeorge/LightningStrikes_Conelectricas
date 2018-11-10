@@ -58,6 +58,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel_fechas = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_KML_AVG = new System.Windows.Forms.Button();
             this.lbl_cargandoZonas = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,7 +81,7 @@
             this.lightningStrikesDataSet1 = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
             this.countLightningsByMonthTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByMonthTableAdapter();
             this.getAllLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetAllLightningsTableAdapter();
-            this.btn_KML_AVG = new System.Windows.Forms.Button();
+            this.btn_KML_MAX = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningZones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
@@ -370,6 +371,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btn_KML_MAX);
             this.panel2.Controls.Add(this.btn_KML_AVG);
             this.panel2.Controls.Add(this.lbl_cargandoZonas);
             this.panel2.Controls.Add(this.label8);
@@ -382,6 +384,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(379, 474);
             this.panel2.TabIndex = 26;
+            // 
+            // btn_KML_AVG
+            // 
+            this.btn_KML_AVG.Location = new System.Drawing.Point(145, 425);
+            this.btn_KML_AVG.Name = "btn_KML_AVG";
+            this.btn_KML_AVG.Size = new System.Drawing.Size(92, 34);
+            this.btn_KML_AVG.TabIndex = 29;
+            this.btn_KML_AVG.Text = "KML AVG";
+            this.btn_KML_AVG.UseVisualStyleBackColor = true;
+            this.btn_KML_AVG.Click += new System.EventHandler(this.btn_KML_AVG_Click);
             // 
             // lbl_cargandoZonas
             // 
@@ -588,15 +600,15 @@
             // 
             this.getAllLightningsTableAdapter.ClearBeforeFill = true;
             // 
-            // btn_KML_AVG
+            // btn_KML_MAX
             // 
-            this.btn_KML_AVG.Location = new System.Drawing.Point(168, 425);
-            this.btn_KML_AVG.Name = "btn_KML_AVG";
-            this.btn_KML_AVG.Size = new System.Drawing.Size(92, 34);
-            this.btn_KML_AVG.TabIndex = 29;
-            this.btn_KML_AVG.Text = "KML AVG";
-            this.btn_KML_AVG.UseVisualStyleBackColor = true;
-            this.btn_KML_AVG.Click += new System.EventHandler(this.btn_KML_AVG_Click);
+            this.btn_KML_MAX.Location = new System.Drawing.Point(269, 425);
+            this.btn_KML_MAX.Name = "btn_KML_MAX";
+            this.btn_KML_MAX.Size = new System.Drawing.Size(92, 34);
+            this.btn_KML_MAX.TabIndex = 30;
+            this.btn_KML_MAX.Text = "KML MAX";
+            this.btn_KML_MAX.UseVisualStyleBackColor = true;
+            this.btn_KML_MAX.Click += new System.EventHandler(this.btn_KML_MAX_Click);
             // 
             // Form1
             // 
@@ -686,6 +698,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AVG_Amp;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAX_Amp;
         private System.Windows.Forms.Button btn_KML_AVG;
+        private System.Windows.Forms.Button btn_KML_MAX;
     }
 }
 
