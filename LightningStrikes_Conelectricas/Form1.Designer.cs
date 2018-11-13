@@ -58,11 +58,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel_fechas = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_KML_MAX = new System.Windows.Forms.Button();
             this.btn_KML_AVG = new System.Windows.Forms.Button();
             this.lbl_cargandoZonas = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_cargarDatosZonas = new System.Windows.Forms.Button();
             this.panel_datos = new System.Windows.Forms.Panel();
             this.btn_crearKMLpoints = new System.Windows.Forms.Button();
             this.dgv_lightningAll = new System.Windows.Forms.DataGridView();
@@ -81,7 +81,6 @@
             this.lightningStrikesDataSet1 = new LightningStrikes_Conelectricas.LightningStrikesDataSet();
             this.countLightningsByMonthTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.CountLightningsByMonthTableAdapter();
             this.getAllLightningsTableAdapter = new LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters.GetAllLightningsTableAdapter();
-            this.btn_KML_MAX = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lightningZones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getLightningsBindingSource)).BeginInit();
@@ -113,7 +112,7 @@
             // 
             this.dtp_Inicial.CustomFormat = "";
             this.dtp_Inicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Inicial.Location = new System.Drawing.Point(8, 32);
+            this.dtp_Inicial.Location = new System.Drawing.Point(31, 32);
             this.dtp_Inicial.Name = "dtp_Inicial";
             this.dtp_Inicial.Size = new System.Drawing.Size(115, 20);
             this.dtp_Inicial.TabIndex = 1;
@@ -123,7 +122,7 @@
             // 
             this.dtp_final.CustomFormat = "";
             this.dtp_final.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_final.Location = new System.Drawing.Point(129, 32);
+            this.dtp_final.Location = new System.Drawing.Point(196, 32);
             this.dtp_final.Name = "dtp_final";
             this.dtp_final.Size = new System.Drawing.Size(115, 20);
             this.dtp_final.TabIndex = 2;
@@ -132,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 16);
+            this.label1.Location = new System.Drawing.Point(40, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 3;
@@ -141,7 +140,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(146, 16);
+            this.label2.Location = new System.Drawing.Point(213, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 4;
@@ -150,7 +149,7 @@
             // cb_cooperativa
             // 
             this.cb_cooperativa.FormattingEnabled = true;
-            this.cb_cooperativa.Location = new System.Drawing.Point(663, 48);
+            this.cb_cooperativa.Location = new System.Drawing.Point(663, 52);
             this.cb_cooperativa.Name = "cb_cooperativa";
             this.cb_cooperativa.Size = new System.Drawing.Size(186, 21);
             this.cb_cooperativa.TabIndex = 5;
@@ -159,10 +158,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(693, 29);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(673, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 16);
+            this.label3.Size = new System.Drawing.Size(166, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cooperativa / Lugar";
             // 
@@ -385,9 +384,19 @@
             this.panel2.Size = new System.Drawing.Size(379, 474);
             this.panel2.TabIndex = 26;
             // 
+            // btn_KML_MAX
+            // 
+            this.btn_KML_MAX.Location = new System.Drawing.Point(269, 425);
+            this.btn_KML_MAX.Name = "btn_KML_MAX";
+            this.btn_KML_MAX.Size = new System.Drawing.Size(92, 34);
+            this.btn_KML_MAX.TabIndex = 30;
+            this.btn_KML_MAX.Text = "KML MAX";
+            this.btn_KML_MAX.UseVisualStyleBackColor = true;
+            this.btn_KML_MAX.Click += new System.EventHandler(this.btn_KML_MAX_Click);
+            // 
             // btn_KML_AVG
             // 
-            this.btn_KML_AVG.Location = new System.Drawing.Point(145, 425);
+            this.btn_KML_AVG.Location = new System.Drawing.Point(158, 425);
             this.btn_KML_AVG.Name = "btn_KML_AVG";
             this.btn_KML_AVG.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_AVG.TabIndex = 29;
@@ -422,7 +431,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_cargarDatosZonas);
             this.panel1.Controls.Add(this.dtp_Inicial);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -431,16 +439,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 69);
             this.panel1.TabIndex = 26;
-            // 
-            // btn_cargarDatosZonas
-            // 
-            this.btn_cargarDatosZonas.Location = new System.Drawing.Point(250, 8);
-            this.btn_cargarDatosZonas.Name = "btn_cargarDatosZonas";
-            this.btn_cargarDatosZonas.Size = new System.Drawing.Size(75, 44);
-            this.btn_cargarDatosZonas.TabIndex = 5;
-            this.btn_cargarDatosZonas.Text = "Cargar";
-            this.btn_cargarDatosZonas.UseVisualStyleBackColor = true;
-            this.btn_cargarDatosZonas.Click += new System.EventHandler(this.btn_cargarDatosZonas_Click);
             // 
             // panel_datos
             // 
@@ -547,6 +545,7 @@
             this.dgv_lightningByMonth.Size = new System.Drawing.Size(150, 430);
             this.dgv_lightningByMonth.TabIndex = 23;
             this.dgv_lightningByMonth.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByMonth_CellClick);
+            this.dgv_lightningByMonth.Sorted += new System.EventHandler(this.dgv_lightningByMonth_Sorted);
             // 
             // mesDataGridViewTextBoxColumn
             // 
@@ -599,16 +598,6 @@
             // getAllLightningsTableAdapter
             // 
             this.getAllLightningsTableAdapter.ClearBeforeFill = true;
-            // 
-            // btn_KML_MAX
-            // 
-            this.btn_KML_MAX.Location = new System.Drawing.Point(269, 425);
-            this.btn_KML_MAX.Name = "btn_KML_MAX";
-            this.btn_KML_MAX.Size = new System.Drawing.Size(92, 34);
-            this.btn_KML_MAX.TabIndex = 30;
-            this.btn_KML_MAX.Text = "KML MAX";
-            this.btn_KML_MAX.UseVisualStyleBackColor = true;
-            this.btn_KML_MAX.Click += new System.EventHandler(this.btn_KML_MAX_Click);
             // 
             // Form1
             // 
@@ -690,7 +679,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btn_cargarDatosZonas;
         private System.Windows.Forms.Label lbl_cargandoZonas;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn latitudDataGridViewTextBoxColumn;

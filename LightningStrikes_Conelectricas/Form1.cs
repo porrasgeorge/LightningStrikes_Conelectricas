@@ -58,10 +58,10 @@ namespace LightningStrikes_Conelectricas
             cb_cooperativa.SelectedIndex = 2;
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             
-            foreach (DataGridViewColumn column in dgv_lightningZones.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            //foreach (DataGridViewColumn column in dgv_lightningZones.Columns)
+            //{
+            //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
 
             foreach (DataGridViewColumn column in dgv_lightningAll.Columns)
             {
@@ -118,6 +118,12 @@ namespace LightningStrikes_Conelectricas
         {
             dgv_lightningZones.Sort(dgv_lightningZones.Columns[4], ListSortDirection.Descending);
             CrearKMLporDescargas(4); //por amplitud promedio
+        }
+
+
+        private void dgv_lightningByMonth_Sorted(object sender, EventArgs e)
+        {
+            this.dgv_lightningByMonth.FirstDisplayedCell = this.dgv_lightningByMonth.CurrentCell;
         }
 
         private void ActualizarTablasFechas()
@@ -224,6 +230,34 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
 
+            List <List<LightningStrike>> ListaRayos = new List<List<LightningStrike>> {
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ }};
+
+            dgv_lightningAll.Sort(dgv_lightningAll.Columns[3], ListSortDirection.Ascending);
+            dgv_lightningAll.Update();
+            foreach (DataGridViewRow row in dgv_lightningAll.Rows)
+            {
+                LightningStrike rayo = new LightningStrike((DateTime)row.Cells[0].Value, (double)row.Cells[2].Value, (double)row.Cells[1].Value, (double)row.Cells[3].Value);
+                double AbsAmplitud = Math.Abs(rayo.amplitud);
+
+                if (AbsAmplitud >= 80)
+                    ListaRayos.ElementAt(4).Add(rayo);
+                else if (AbsAmplitud >= 60)
+                    ListaRayos.ElementAt(3).Add(rayo);
+                else if(AbsAmplitud >= 40)
+                    ListaRayos.ElementAt(2).Add(rayo);
+                else if (AbsAmplitud >= 20)
+                    ListaRayos.ElementAt(1).Add(rayo);
+                else
+                    ListaRayos.ElementAt(0).Add(rayo);
+            }
+
+            
+
             List<string> lineas = new List<string>();
 
             lineas.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -232,69 +266,139 @@ namespace LightningStrikes_Conelectricas
             lineas.Add("\t\t<open>1</open>");
             lineas.Add("\t\t<name>" + fechaCSV + "</name>");
 
-            lineas.Add("\t\t<Style id=\"Rojo\">");
+
+
+            lineas.Add("\t\t<Style id=\"Color4\">");
             lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
             lineas.Add("\t\t\t<IconStyle>");
-            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color3\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color2\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color1\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color0\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+
+            lineas.Add("\t\t<Style id=\"Color4p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
             lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon>");
             lineas.Add("\t\t\t</IconStyle>");
             lineas.Add("\t\t</Style>");
 
-            lineas.Add("\t\t<Style id=\"Rosado\">");
+            lineas.Add("\t\t<Style id=\"Color3p\">");
             lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
             lineas.Add("\t\t\t<IconStyle>");
-            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
-            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/pink-circle.png</href></Icon>");
-            lineas.Add("\t\t\t</IconStyle>");
-            lineas.Add("\t\t</Style>");
-
-            lineas.Add("\t\t<Style id=\"Amarillo\">");
-            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
-            lineas.Add("\t\t\t<IconStyle>");
-            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
             lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon>");
             lineas.Add("\t\t\t</IconStyle>");
             lineas.Add("\t\t</Style>");
 
-            lineas.Add("\t\t<Style id=\"Celeste\">");
+            lineas.Add("\t\t<Style id=\"Color2p\">");
             lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
             lineas.Add("\t\t\t<IconStyle>");
-            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
-            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ltblu-circle.png</href></Icon>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon>");
             lineas.Add("\t\t\t</IconStyle>");
             lineas.Add("\t\t</Style>");
 
-            lineas.Add("\t\t<Style id=\"Blanco\">");
+            lineas.Add("\t\t<Style id=\"Color1p\">");
             lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
             lineas.Add("\t\t\t<IconStyle>");
-            //lineas.Add("\t\t\t\t<scale>0.5</scale>");
             lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>");
             lineas.Add("\t\t\t</IconStyle>");
             lineas.Add("\t\t</Style>");
 
-            foreach (DataGridViewRow row in dgv_lightningAll.Rows)
+            lineas.Add("\t\t<Style id=\"Color0p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            int iteracion = 0;
+
+            foreach (List<LightningStrike> ListaNiveles in ListaRayos)
             {
-                Double Ampl = Convert.ToDouble(row.Cells[3].Value.ToString());
 
-                lineas.Add("\t\t<Placemark>");
-                lineas.Add("\t\t\t<name>" + Convert.ToString(row.Cells[0].Value) + "</name>");
-                if (Math.Abs(Ampl) > 80)
-                    lineas.Add("\t\t\t\t<styleUrl>#Rojo</styleUrl>");
-                else if (Math.Abs(Ampl) > 50)
-                    lineas.Add("\t\t\t\t<styleUrl>#Rosado</styleUrl>");
-                else if (Math.Abs(Ampl) > 35)
-                    lineas.Add("\t\t\t\t<styleUrl>#Amarillo</styleUrl>");
-                else if (Math.Abs(Ampl) > 20)
-                    lineas.Add("\t\t\t\t<styleUrl>#Celeste</styleUrl>");
+                lineas.Add("\t\t<Folder>");
+                if (iteracion == 4)
+                    lineas.Add("\t\t\t<name>Más de 80kA</name>");
+                else if(iteracion == 3)
+                    lineas.Add("\t\t\t<name>Entre 60kA y 80kA</name>");
+                else if(iteracion == 2)
+                    lineas.Add("\t\t\t<name>Entre 40kA y 60kA</name>");
+                else if(iteracion == 1)
+                    lineas.Add("\t\t\t<name>Entre 20kA y 40kA</name>");
                 else
-                    lineas.Add("\t\t\t\t<styleUrl>#Blanco</styleUrl>");
+                    lineas.Add("\t\t\t<name>Menos de 20kA</name>");
 
-                lineas.Add("\t\t\t<description>Amplitud: " + Convert.ToString(Ampl) + "kA</description>");
-                lineas.Add("\t\t\t<Point>");
-                lineas.Add("\t\t\t\t<coordinates>"+ Convert.ToString(row.Cells[1].Value) +","+ Convert.ToString(row.Cells[2].Value) + "</coordinates>");
-                lineas.Add("\t\t\t</Point>");
-                lineas.Add("\t\t</Placemark>");
+                lineas.Add("\t\t\t<visibility>1</visibility>");
+                lineas.Add("\t\t\t<open>0</open>");
+
+
+                foreach (LightningStrike lightning in ListaNiveles)
+                {
+                    double Ampl = lightning.amplitud;
+
+                    lineas.Add("\t\t\t<Placemark>");
+                    lineas.Add("\t\t\t\t<name>" + Convert.ToString(lightning.FechaHora) + "</name>");
+                    if (Ampl >= 80)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color4p</styleUrl>");
+                    else if (Ampl >= 60)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color3p</styleUrl>");
+                    else if (Ampl >= 40)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color2p</styleUrl>");
+                    else if (Ampl >= 20)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color1p</styleUrl>");
+                    else if (Ampl >= 0)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color0p</styleUrl>");
+                    else if (Ampl > -20)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color0</styleUrl>");
+                    else if (Ampl > -40)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color1</styleUrl>");
+                    else if (Ampl > -60)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color2</styleUrl>");
+                    else if (Ampl > -80)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color3</styleUrl>");
+                    else
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color4</styleUrl>");
+
+                    lineas.Add("\t\t\t\t<description>Amplitud: " + Convert.ToString(lightning.amplitud) + "kA</description>");
+                    lineas.Add("\t\t\t\t<Point>");
+                    lineas.Add("\t\t\t\t\t<coordinates>" + Convert.ToString(lightning.longitud) + "," + Convert.ToString(lightning.latitud) + "</coordinates>");
+                    lineas.Add("\t\t\t\t</Point>");
+                    lineas.Add("\t\t\t</Placemark>");
+                }
+                lineas.Add("\t\t</Folder>");
+
+                iteracion++;
+
             }
+
             lineas.Add("\t</Document>");
             lineas.Add("</kml>");
 
@@ -350,7 +454,7 @@ namespace LightningStrikes_Conelectricas
             }
             catch (Exception exep)
             {
-                MessageBox.Show("No hay datos seleccionados\r\n" + exep.ToString(), "Error");
+                MessageBox.Show("No hay datos seleccionados\r\n", "Error");
                 NoConvError = false;
             }
 
@@ -382,12 +486,12 @@ namespace LightningStrikes_Conelectricas
 
                 lineas.Add("\t\t<Style id=\"color1\">");
                 lineas.Add("\t\t\t<LineStyle> <width>0</width></LineStyle>");
-                lineas.Add("\t\t\t<PolyStyle> <color>4400ff00</color> </PolyStyle> ");
+                lineas.Add("\t\t\t<PolyStyle> <color>55FFFFFF</color> </PolyStyle> ");
                 lineas.Add("\t\t</Style>");
 
                 lineas.Add("\t\t<Style id=\"color0\">");
                 lineas.Add("\t\t\t<LineStyle> <width>0</width></LineStyle>");
-                lineas.Add("\t\t\t<PolyStyle> <color>55000000</color> </PolyStyle> ");
+                lineas.Add("\t\t\t<PolyStyle> <color>55FF78B4</color> </PolyStyle> ");
                 lineas.Add("\t\t</Style>");
 
                 lineas.Add("\t\t<LookAt>");
@@ -798,11 +902,20 @@ namespace LightningStrikes_Conelectricas
                 lineas.Add("</kml>");
                 string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
                 string str3D = "";
+                string str_botonPresionado = "";
                 if (is3D)
                     str3D = "3D";
                 else
                     str3D = "2D";
-                string nombreArchivo = NombreCoop + " " + fechaInicial.ToString("ddMMyyyy") + "-" + fechaFinal.ToString("ddMMyyyy") + "_" + str3D;
+
+                if (columna == 3)
+                    str_botonPresionado = "Amplitud Promedio";
+                else if (columna == 4)
+                    str_botonPresionado = "Amplitud Maxima";
+                else
+                    str_botonPresionado = "Cantidad";
+
+                string nombreArchivo = NombreCoop + " (" + str_botonPresionado+ ") " + fechaInicial.ToString("ddMMyyyy") + "-" + fechaFinal.ToString("ddMMyyyy") + "_" + str3D;
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -832,7 +945,7 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.Update();
             List<string> CSV_Content = new List<string>();
             CSV_Content.Add("Descargas Diarias");
-            CSV_Content.Add("Fecha,Longitid,Latitud,Amplitud");
+            CSV_Content.Add("Fecha,Longitid,Latitud,Amplitud (kA)");
             foreach (DataGridViewRow row in dgv_lightningAll.Rows)
             {
                 CSV_Content.Add(Convert.ToString(row.Cells[0].Value) +
@@ -867,7 +980,6 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.Update();
 
         }
-
 
     }
 }
