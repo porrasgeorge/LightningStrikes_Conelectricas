@@ -174,6 +174,20 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoZonas.Visible = false;
             lbl_cargandoZonas.Update();
 
+            if (dgv_lightningZones.Rows.Count > 0)
+            { 
+                btn_KML_Descargas.Enabled = true;
+                btn_KML_AVG.Enabled = true;
+                btn_KML_MAX.Enabled = true;
+            }
+            else
+            {
+                btn_KML_Descargas.Enabled = false;
+                btn_KML_AVG.Enabled = false;
+                btn_KML_MAX.Enabled = false;
+            }
+
+
         }
 
 
