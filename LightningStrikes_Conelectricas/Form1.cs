@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,6 +20,16 @@ namespace LightningStrikes_Conelectricas
         DateTime fechaFinal;
         int cooperativaID;
         bool disableFiringEvents = false;
+        double UP_limit;
+        double LOW_limit;
+        double LEFT_limit;
+        double RIGHT_limit;
+        int NumFilas = 0;
+        List<LightningStrike> listaRayos;
+
+        public Boolean etiquetaCorrectaBool;
+        public Boolean formatoCorrectoBool;
+        public Boolean ArchivoCorrectoBool;
 
         public double MaxValue(int columna)
         {
@@ -50,6 +62,7 @@ namespace LightningStrikes_Conelectricas
             dataSource.Add(new Cooperativa() { Name = "Canalete_Miravalles", Value = "5" });
             dataSource.Add(new Cooperativa() { Name = "ESPH", Value = "6" });
             dataSource.Add(new Cooperativa() { Name = "Costa Rica", Value = "7" });
+            dataSource.Add(new Cooperativa() { Name = "Santa Rosa Pocosol", Value = "8" });
 
             cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
@@ -57,11 +70,26 @@ namespace LightningStrikes_Conelectricas
             cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_cooperativa.SelectedIndex = 2;
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
-            
-            //foreach (DataGridViewColumn column in dgv_lightningZones.Columns)
-            //{
-            //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            //}
+
+            cb_cooperativaArea.DataSource = dataSource;
+            cb_cooperativaArea.DisplayMember = "Name";
+            cb_cooperativaArea.ValueMember = "Value";
+            cb_cooperativaArea.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_cooperativaArea.SelectedIndex = 2;
+
+            listaRayos = new List<LightningStrike>();
+            pb_completado.Visible = false;
+            btn_leer.Enabled = true;
+            btn_GuardarDB.Enabled = false;
+
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+
+            //pb_completado.Maximum = listaRayos.Count;
+            pb_completado.Step = 1;
+            pb_completado.Value = 0;
+            pb_completado.Visible = false;
+
 
             foreach (DataGridViewColumn column in dgv_lightningAll.Columns)
             {
@@ -81,8 +109,14 @@ namespace LightningStrikes_Conelectricas
             dgv_lightningByMonth.Update();
             dgv_lightningByDay.Update();
             dgv_lightningAll.Update();
-            ActualizarTablasZonas();
 
+        }
+
+
+        private void cb_cooperativaArea_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cooperativaID = Convert.ToInt32(cb_cooperativaArea.SelectedValue.ToString());
+            ActualizarTablasZonas();
         }
 
         private void dtp_Inicial_ValueChanged(object sender, EventArgs e)
@@ -156,8 +190,8 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoZonas.Update();
             try
             {
-                fechaInicial = this.dtp_Inicial.Value;
-                fechaFinal = this.dtp_final.Value;
+                fechaInicial = this.dtp_Inicial.Value.Date;
+                fechaFinal = this.dtp_final.Value.Date;
 
                 dgv_lightningZones.DataSource = this.getLightningsTableAdapter.GetData(fechaInicial, fechaFinal, cooperativaID);
                 dgv_lightningByMonth.ClearSelection();
@@ -186,8 +220,6 @@ namespace LightningStrikes_Conelectricas
                 btn_KML_AVG.Enabled = false;
                 btn_KML_MAX.Enabled = false;
             }
-
-
         }
 
 
@@ -474,7 +506,6 @@ namespace LightningStrikes_Conelectricas
 
             if (NoConvError)
             {
-
                 List<string> lineas = new List<string>();
 
                 lineas.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -994,6 +1025,508 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.Update();
 
         }
+
+        private void btn_ActualizarBordes_Click(object sender, EventArgs e)
+        {
+            lbl_cargandoBordes.Visible = true;
+            lbl_cargandoBordes.BringToFront();
+            lbl_cargandoBordes.Update();
+            try
+            {
+                fechaInicial = this.dtp_InicialBordes.Value.Date;
+                fechaFinal = this.dtp_FinalBordes.Value.Date;
+                UP_limit = Convert.ToDouble(txt_UP.Text);
+                LOW_limit = Convert.ToDouble(txt_LOW.Text);
+                LEFT_limit = Convert.ToDouble(txt_LEFT.Text);
+                RIGHT_limit = Convert.ToDouble(txt_RIGHT.Text);
+
+
+                dgv_lightningsBorders.DataSource = this.getAllLightningsByBoundsTableAdapter.GetData(fechaInicial, fechaFinal, LEFT_limit, RIGHT_limit, UP_limit, LOW_limit);
+                dgv_lightningsBorders.ClearSelection();
+
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            };
+            lbl_TotalRegistros.Text = dgv_lightningsBorders.Rows.Count.ToString();
+            lbl_cargandoBordes.Visible = false;
+            lbl_cargandoBordes.Update();
+
+            lbl_Actualizar.Visible = false;
+            lbl_Actualizar.Update();
+
+
+        }
+
+        private void btn_CrearKmlBordes_Click(object sender, EventArgs e)
+        {
+            List<List<LightningStrike>> ListaRayos = new List<List<LightningStrike>> {
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ },
+            new List<LightningStrike>{ }};
+
+            dgv_lightningsBorders.Sort(dgv_lightningsBorders.Columns[3], ListSortDirection.Ascending);
+            dgv_lightningsBorders.Update();
+
+            foreach (DataGridViewRow row in dgv_lightningsBorders.Rows)
+            {
+                LightningStrike rayo = new LightningStrike((DateTime)row.Cells[0].Value, (double)row.Cells[2].Value, (double)row.Cells[1].Value, (double)row.Cells[3].Value);
+                double AbsAmplitud = Math.Abs(rayo.amplitud);
+
+                if (AbsAmplitud >= 80)
+                    ListaRayos.ElementAt(4).Add(rayo);
+                else if (AbsAmplitud >= 60)
+                    ListaRayos.ElementAt(3).Add(rayo);
+                else if (AbsAmplitud >= 40)
+                    ListaRayos.ElementAt(2).Add(rayo);
+                else if (AbsAmplitud >= 20)
+                    ListaRayos.ElementAt(1).Add(rayo);
+                else
+                    ListaRayos.ElementAt(0).Add(rayo);
+            }
+
+            List<string> lineas = new List<string>();
+
+            lineas.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            lineas.Add("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+            lineas.Add("\t<Document>");
+            lineas.Add("\t\t<open>1</open>");
+            lineas.Add("\t\t<name>Descargas Atmosfericas</name>");
+
+            lineas.Add("\t\t<Style id=\"Color4\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color3\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color2\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color1\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color0\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+
+            lineas.Add("\t\t<Style id=\"Color4p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color3p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color2p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color1p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color0p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            int iteracion = 0;
+
+            foreach (List<LightningStrike> ListaNiveles in ListaRayos)
+            {
+
+                lineas.Add("\t\t<Folder>");
+                if (iteracion == 4)
+                    lineas.Add("\t\t\t<name>Más de 80kA</name>");
+                else if (iteracion == 3)
+                    lineas.Add("\t\t\t<name>Entre 60kA y 80kA</name>");
+                else if (iteracion == 2)
+                    lineas.Add("\t\t\t<name>Entre 40kA y 60kA</name>");
+                else if (iteracion == 1)
+                    lineas.Add("\t\t\t<name>Entre 20kA y 40kA</name>");
+                else
+                    lineas.Add("\t\t\t<name>Menos de 20kA</name>");
+
+                lineas.Add("\t\t\t<visibility>1</visibility>");
+                lineas.Add("\t\t\t<open>0</open>");
+
+
+                foreach (LightningStrike lightning in ListaNiveles)
+                {
+                    double Ampl = lightning.amplitud;
+
+                    lineas.Add("\t\t\t<Placemark>");
+                    lineas.Add("\t\t\t\t<name>" + Convert.ToString(lightning.FechaHora) + "</name>");
+                    if (Ampl >= 80)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color4p</styleUrl>");
+                    else if (Ampl >= 60)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color3p</styleUrl>");
+                    else if (Ampl >= 40)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color2p</styleUrl>");
+                    else if (Ampl >= 20)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color1p</styleUrl>");
+                    else if (Ampl >= 0)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color0p</styleUrl>");
+                    else if (Ampl > -20)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color0</styleUrl>");
+                    else if (Ampl > -40)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color1</styleUrl>");
+                    else if (Ampl > -60)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color2</styleUrl>");
+                    else if (Ampl > -80)
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color3</styleUrl>");
+                    else
+                        lineas.Add("\t\t\t\t\t<styleUrl>#Color4</styleUrl>");
+
+                    lineas.Add("\t\t\t\t<description>Amplitud: " + Convert.ToString(lightning.amplitud) + "kA</description>");
+                    lineas.Add("\t\t\t\t<Point>");
+                    lineas.Add("\t\t\t\t\t<coordinates>" + Convert.ToString(lightning.longitud) + "," + Convert.ToString(lightning.latitud) + "</coordinates>");
+                    lineas.Add("\t\t\t\t</Point>");
+                    lineas.Add("\t\t\t</Placemark>");
+                }
+                lineas.Add("\t\t</Folder>");
+
+                iteracion++;
+
+            }
+
+            lineas.Add("\t</Document>");
+            lineas.Add("</kml>");
+
+            string nombreArchivo = "Descargas Atmosfericas";
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.FileName = nombreArchivo;
+            saveFileDialog1.CheckFileExists = false;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "kml";
+            saveFileDialog1.Filter = "KML files (*.kml)|*.kml|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                nombreArchivo = saveFileDialog1.FileName;
+                System.IO.File.WriteAllLines(nombreArchivo, lineas);
+                MessageBox.Show(nombreArchivo + " \n\nCREADO SATISFACTORIAMENTE", "KML");
+            }
+
+        }
+
+        private void txt_RIGHT_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void txt_LOW_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void txt_LEFT_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void txt_UP_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void dtp_InicialBordes_ValueChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void dtp_FinalBordes_ValueChanged(object sender, EventArgs e)
+        {
+            lbl_Actualizar.Visible = true;
+            lbl_Actualizar.BringToFront();
+            lbl_Actualizar.Update();
+        }
+
+        private void btn_leer_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+            string log = "";
+            int counter = 0;
+            NumFilas = 0;
+            listaRayos.Clear();
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|dat files (*.dat)|*.dat|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                //openFileDialog.Multiselect = true;
+
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+                    formatoCorrectoBool = true;
+                    ArchivoCorrectoBool = false;
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(fileContent))
+                    {
+                        string[] lineasArchivo = fileContent.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                        counter = 0;
+
+
+                        foreach (String linea in lineasArchivo)
+                        {
+                            if (counter != 0)
+                            {
+                                if (!string.IsNullOrEmpty(linea))
+                                {
+                                    string[] columnas = linea.Split(",".ToCharArray());
+
+                                    DateTime Fecha = DateTime.Parse("2000-01-01");
+                                    double latitud = 0.0;
+                                    double longitud = 0.0;
+                                    double amplitud = 0.0;
+                                    double altura = 0.0;
+
+                                    bool Fecha_Ok = false;
+                                    bool latitud_OK = false;
+                                    bool longitud_OK = false;
+                                    bool amplitud_OK = false;
+                                    bool altura_OK = false;
+
+                                    if (columnas.Length > 4)
+                                    {
+                                        Fecha_Ok = DateTime.TryParse(columnas[0], out Fecha);
+                                        latitud_OK = Double.TryParse(columnas[1], out latitud);
+                                        longitud_OK = Double.TryParse(columnas[2], out longitud);
+                                        amplitud_OK = Double.TryParse(columnas[3], out amplitud);
+                                        altura_OK = Double.TryParse(columnas[4], out altura);
+
+                                    }
+
+                                    if (latitud_OK && longitud_OK && Fecha_Ok && amplitud_OK)
+                                    {
+                                        //log += "Linea " + Convert.ToString(counter + 1) + " OK";
+                                        Fecha = Fecha.AddHours(-6);
+                                        if (latitud < 9 || latitud > 12)
+                                        {
+                                            log += Convert.ToString(counter + 1) + " Lat no CR\r\n";
+                                        }
+                                        else if (longitud < -86 || longitud > -82)
+                                        {
+                                            log += Convert.ToString(counter + 1) + ", Long no CR\r\n";
+                                        }
+                                        else
+                                        {
+                                            LightningStrike rayo = new LightningStrike(Fecha, latitud, longitud, amplitud, altura);
+                                            listaRayos.Add(rayo);
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        log += Convert.ToString(counter + 1) + " ERRONEA\r\n";
+                                        formatoCorrectoBool = false;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(linea))
+                                {
+                                    string[] columnas = linea.Split(",".ToCharArray());
+
+                                    if (columnas[0] == "LIGHTNING-Conelec24hr")
+                                    {
+                                        //log += "Linea " + Convert.ToString(counter + 1) + " OK\r\n";
+                                        lbl_etiquetaCorrecta.Text = "SI";
+                                        ArchivoCorrectoBool = true;
+                                    }
+
+                                    else
+                                    {
+                                        log += "Linea " + Convert.ToString(counter + 1) + " ERRONEA\r\n";
+                                        lbl_etiquetaCorrecta.Text = "NO";
+                                        ArchivoCorrectoBool = false;
+                                    }
+                                    if (!string.IsNullOrEmpty(columnas[1]))
+                                    {
+                                        string[] fecha_txt = columnas[1].Split("_".ToCharArray());
+                                        lbl_fechaArchivo.Text = fecha_txt[2] + "/" + fecha_txt[1] + "/" + fecha_txt[0];
+                                    }
+                                }
+                            }
+                            counter++;
+                        }
+                        NumFilas = listaRayos.Count - 1;
+                    }
+                }
+
+                if (formatoCorrectoBool)
+                {
+                    log += "\r\nFormato Correcto\r\n";
+                    log += Convert.ToString(listaRayos.Count) + " lineas Correctas\r\n";
+                    log += Convert.ToString(counter - listaRayos.Count - 1) + " lineas Incorrectas\r\n";
+                    btn_GuardarDB.Enabled = true;
+
+                }
+            }
+            txt_log.Text = log;
+        }
+
+        private void btn_GuardarDB_Click(object sender, EventArgs e)
+        {
+            pb_completado.Visible = true;
+            btn_GuardarDB.Enabled = false;
+            btn_leer.Enabled = false;
+
+            if (backgroundWorker1.IsBusy != true)
+            {
+                // Start the asynchronous operation.
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            int j = 0;
+
+            if (ArchivoCorrectoBool)
+            {
+                string connetionString = null;
+                SqlConnection cnn;
+                connetionString = "Data Source=192.168.4.2;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
+                cnn = new SqlConnection(connetionString);
+                try
+                {
+                    cnn.Open();
+                    foreach (LightningStrike lightning in listaRayos)
+                    {
+                        j++;
+                        SqlCommand cmd = new SqlCommand("InsertLightning", cnn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fechaHora", lightning.FechaHora);
+                        cmd.Parameters.AddWithValue("@latitud", lightning.latitud);
+                        cmd.Parameters.AddWithValue("@longitud", lightning.longitud);
+                        cmd.Parameters.AddWithValue("@amplitud", lightning.amplitud);
+                        cmd.Parameters.AddWithValue("@altura", lightning.altura);
+
+                        cmd.ExecuteNonQuery();
+
+                        backgroundWorker1.ReportProgress(j * 100 / (NumFilas + 1), new System.Tuple<int>(j));
+
+                    }
+                    cnn.Close();
+
+                    //MessageBox.Show("Archivo Cargado Correctamente", "Cargado");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can not open connection ! \r\n" + ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Archivo Incorrecto", "Error");
+            }
+
+
+            System.Threading.Thread.Sleep(500);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pb_completado.Value = e.ProgressPercentage;
+            lbl_progress.Text = e.UserState.ToString();
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                label3.Text = "Canceled!";
+            }
+            else if (e.Error != null)
+            {
+                label3.Text = "Error: " + e.Error.Message;
+            }
+            else
+            {
+                pb_completado.Visible = false;
+                btn_GuardarDB.Enabled = false;
+                btn_leer.Enabled = true;
+            }
+        }
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            //this.countLightningsByDayP6TableAdapter.Fill(this.lightningStrikesDataSet.CountLightningsByDayP6);
+            dgv_LightningsByDayP6.DataSource = this.countLightningsByDayP6TableAdapter.GetData();
+        }
+
 
     }
 }

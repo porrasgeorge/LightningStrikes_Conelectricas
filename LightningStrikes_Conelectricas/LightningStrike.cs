@@ -14,11 +14,23 @@ namespace LightningStrikes_Conelectricas
             this.latitud = latitud;
             this.longitud = longitud;
             this.amplitud = amplitud;
+            this.altura = 0.0;
+        }
+
+        public LightningStrike(DateTime fechaHora, double latitud, double longitud, double amplitud, double altura)
+        {
+            FechaHora = fechaHora;
+            this.latitud = latitud;
+            this.longitud = longitud;
+            this.amplitud = amplitud;
+            this.altura = altura;
+
         }
 
         public DateTime FechaHora { get; set; }
         public double latitud { get; set; }
         public double longitud { get; set; }
         public double amplitud { get; set; }
+        public double altura { get; set; }
     }
 }
