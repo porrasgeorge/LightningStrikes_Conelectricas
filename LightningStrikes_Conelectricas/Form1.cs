@@ -20,7 +20,7 @@ namespace LightningStrikes_Conelectricas
         DateTime fechaFinal;
         int cooperativaID;
         int cooperativaIDArea;
-        bool disableFiringEvents = false;
+        bool disableFiringEvents = true;
         double UP_limit;
         double LOW_limit;
         double LEFT_limit;
@@ -56,31 +56,30 @@ namespace LightningStrikes_Conelectricas
             btn_crearKMLpoints.Enabled = false;
             dtp_Inicial.Value = DateTime.Today.AddDays(-1);
             dtp_final.Value = DateTime.Today;
-            dataSource.Add(new Cooperativa() { Name = "Coopeguanacaste", Value = "1" });
-            dataSource.Add(new Cooperativa() { Name = "Coopelesca", Value = "2" });
-            dataSource.Add(new Cooperativa() { Name = "Coopealfaroruiz", Value = "3" });
-            dataSource.Add(new Cooperativa() { Name = "Coopesantos", Value = "4" });
+            dataSource.Add(new Cooperativa() { Name = "Coopeguanacaste",    Value = "1" });
+            dataSource.Add(new Cooperativa() { Name = "Coopelesca",         Value = "2" });
+            dataSource.Add(new Cooperativa() { Name = "Coopealfaroruiz",    Value = "3" });
+            dataSource.Add(new Cooperativa() { Name = "Coopesantos",        Value = "4" });
             dataSource.Add(new Cooperativa() { Name = "Canalete_Miravalles", Value = "5" });
-            dataSource.Add(new Cooperativa() { Name = "ESPH", Value = "6" });
-            dataSource.Add(new Cooperativa() { Name = "Costa Rica", Value = "7" });
+            dataSource.Add(new Cooperativa() { Name = "ESPH",               Value = "6" });
+            dataSource.Add(new Cooperativa() { Name = "Costa Rica",         Value = "7" });
             dataSource.Add(new Cooperativa() { Name = "Santa Rosa Pocosol", Value = "8" });
 
             cb_cooperativa.DataSource = dataSource;
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
             cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_cooperativa.SelectedIndex = 2;
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cb_cooperativa.SelectedIndex = 1;
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
             var dataSource2 = new List<Cooperativa>();
             dataSource2 = dataSource.ToList();
-
             cb_cooperativaArea.DataSource = dataSource2;
             cb_cooperativaArea.DisplayMember = "Name";
             cb_cooperativaArea.ValueMember = "Value";
             cb_cooperativaArea.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_cooperativaArea.SelectedIndex = 2;
-            cooperativaIDArea = Convert.ToInt32(cb_cooperativaArea.SelectedIndex.ToString());
+            cb_cooperativaArea.SelectedIndex = 1;
+            cooperativaIDArea = Convert.ToInt32(cb_cooperativaArea.SelectedValue.ToString());
 
             listaRayos = new List<LightningStrike>();
             pb_completado.Visible = false;
@@ -94,7 +93,7 @@ namespace LightningStrikes_Conelectricas
             pb_completado.Step = 1;
             pb_completado.Value = 0;
             pb_completado.Visible = false;
-
+            disableFiringEvents = false;
 
             foreach (DataGridViewColumn column in dgv_lightningAll.Columns)
             {
@@ -109,7 +108,7 @@ namespace LightningStrikes_Conelectricas
 
         private void cb_cooperativa_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             ActualizarTablasFechas();
             dgv_lightningByMonth.Update();
             dgv_lightningByDay.Update();
@@ -120,7 +119,8 @@ namespace LightningStrikes_Conelectricas
 
         private void cb_cooperativaArea_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            ActualizarTablasZonas();
+            if (!disableFiringEvents)
+                ActualizarTablasZonas();
         }
 
         private void dtp_Inicial_ValueChanged(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.Visible = true;
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             try
             {
                 dgv_lightningByMonth.DataSource = this.countLightningsByMonthTableAdapter.GetData(cooperativaID);
@@ -190,9 +190,10 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoZonas.BringToFront();
             lbl_cargandoZonas.Update();
 
-            cooperativaIDArea = Convert.ToInt32(cb_cooperativaArea.SelectedIndex.ToString());
+            cooperativaIDArea = Convert.ToInt32(cb_cooperativaArea.SelectedValue.ToString());
             try
             {
+                
                 fechaInicial = this.dtp_Inicial.Value.Date;
                 fechaFinal = this.dtp_final.Value.Date;
 
@@ -236,7 +237,7 @@ namespace LightningStrikes_Conelectricas
         {
             if (e.RowIndex == -1) return;
 
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
             btn_CrearCSV.Enabled = false;
             btn_crearKMLpoints.Enabled = false;
@@ -255,7 +256,7 @@ namespace LightningStrikes_Conelectricas
         private void dgv_lightningByMonth_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = false;
@@ -278,7 +279,7 @@ namespace LightningStrikes_Conelectricas
         private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedIndex.ToString());
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = true;
             lbl_cargandoFechas.Visible = true;

@@ -1173,6 +1173,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cb_cooperativa;
+        private System.Windows.Forms.ComboBox cb_cooperativaArea;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_lightningZones;
         private System.Windows.Forms.Button btn_KML_Descargas;
@@ -1220,7 +1221,6 @@
         private System.Windows.Forms.TabPage tabPorDia;
         private System.Windows.Forms.TabPage tabConteo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cb_cooperativaArea;
         private System.Windows.Forms.TabPage tabBorders;
         private System.Windows.Forms.TabPage tabSubir;
         private System.Windows.Forms.Panel panel3;
