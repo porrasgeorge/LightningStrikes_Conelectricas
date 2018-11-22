@@ -427,6 +427,7 @@
             this.dgv_lightningAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_lightningAll.Size = new System.Drawing.Size(350, 207);
             this.dgv_lightningAll.TabIndex = 26;
+            this.dgv_lightningAll.DataSourceChanged += new System.EventHandler(this.dgv_lightningAll_DataSourceChanged);
             // 
             // dgv_lightningByMonth
             // 

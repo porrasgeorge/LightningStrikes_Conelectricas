@@ -236,6 +236,8 @@ namespace LightningStrikes_Conelectricas
         {
             if (e.RowIndex == -1) return;
 
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+
             btn_CrearCSV.Enabled = false;
             btn_crearKMLpoints.Enabled = false;
             lbl_cargandoFechas.Visible = true;
@@ -253,6 +255,7 @@ namespace LightningStrikes_Conelectricas
         private void dgv_lightningByMonth_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = false;
@@ -269,13 +272,13 @@ namespace LightningStrikes_Conelectricas
 
             lbl_cargandoFechas.Visible = false;
             lbl_cargandoFechas.Update();
-            lbl_DescargasDiariasCount.Text = dgv_lightningAll.Rows.Count.ToString();
+            
         }
 
         private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-
+            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = true;
             lbl_cargandoFechas.Visible = true;
@@ -1547,10 +1550,12 @@ namespace LightningStrikes_Conelectricas
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            //this.countLightningsByDayP6TableAdapter.Fill(this.lightningStrikesDataSet.CountLightningsByDayP6);
             dgv_LightningsByDayP6.DataSource = this.countLightningsByDayP6TableAdapter.GetData();
         }
 
-
+        private void dgv_lightningAll_DataSourceChanged(object sender, EventArgs e)
+        {
+            lbl_DescargasDiariasCount.Text = dgv_lightningAll.Rows.Count.ToString();
+        }
     }
 }
