@@ -155,9 +155,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LightningStrikes_Conelectricas.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(26, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(405, 91);
+            this.pictureBox1.Size = new System.Drawing.Size(416, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -166,7 +166,7 @@
             // 
             this.dtp_Inicial.CustomFormat = "";
             this.dtp_Inicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Inicial.Location = new System.Drawing.Point(238, 31);
+            this.dtp_Inicial.Location = new System.Drawing.Point(240, 30);
             this.dtp_Inicial.Name = "dtp_Inicial";
             this.dtp_Inicial.Size = new System.Drawing.Size(115, 20);
             this.dtp_Inicial.TabIndex = 1;
@@ -176,7 +176,7 @@
             // 
             this.dtp_final.CustomFormat = "";
             this.dtp_final.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_final.Location = new System.Drawing.Point(239, 70);
+            this.dtp_final.Location = new System.Drawing.Point(240, 70);
             this.dtp_final.Name = "dtp_final";
             this.dtp_final.Size = new System.Drawing.Size(115, 20);
             this.dtp_final.TabIndex = 2;
@@ -185,7 +185,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(259, 13);
+            this.label1.Location = new System.Drawing.Point(253, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 3;
@@ -194,7 +194,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(257, 54);
+            this.label2.Location = new System.Drawing.Point(257, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 4;
@@ -239,7 +239,7 @@
             this.dgv_lightningZones.ReadOnly = true;
             this.dgv_lightningZones.RowHeadersVisible = false;
             this.dgv_lightningZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningZones.Size = new System.Drawing.Size(350, 373);
+            this.dgv_lightningZones.Size = new System.Drawing.Size(350, 405);
             this.dgv_lightningZones.TabIndex = 7;
             // 
             // cantidadDataGridViewTextBoxColumn1
@@ -294,7 +294,7 @@
             // 
             // btn_KML_Descargas
             // 
-            this.btn_KML_Descargas.Location = new System.Drawing.Point(47, 425);
+            this.btn_KML_Descargas.Location = new System.Drawing.Point(47, 469);
             this.btn_KML_Descargas.Name = "btn_KML_Descargas";
             this.btn_KML_Descargas.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_Descargas.TabIndex = 8;
@@ -307,7 +307,7 @@
             this.Check3D.AutoSize = true;
             this.Check3D.Checked = true;
             this.Check3D.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Check3D.Location = new System.Drawing.Point(23, 441);
+            this.Check3D.Location = new System.Drawing.Point(15, 485);
             this.Check3D.Name = "Check3D";
             this.Check3D.Size = new System.Drawing.Size(15, 14);
             this.Check3D.TabIndex = 9;
@@ -317,7 +317,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(20, 425);
+            this.label4.Location = new System.Drawing.Point(12, 469);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 14;
@@ -414,10 +414,10 @@
             this.tabControl1.Controls.Add(this.tabConteo);
             this.tabControl1.Controls.Add(this.tabBorders);
             this.tabControl1.Controls.Add(this.tabSubir);
-            this.tabControl1.Location = new System.Drawing.Point(26, 114);
+            this.tabControl1.Location = new System.Drawing.Point(8, 109);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(412, 658);
+            this.tabControl1.Size = new System.Drawing.Size(420, 658);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPorDia
@@ -428,7 +428,7 @@
             this.tabPorDia.Location = new System.Drawing.Point(4, 22);
             this.tabPorDia.Name = "tabPorDia";
             this.tabPorDia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPorDia.Size = new System.Drawing.Size(404, 632);
+            this.tabPorDia.Size = new System.Drawing.Size(412, 632);
             this.tabPorDia.TabIndex = 0;
             this.tabPorDia.Text = "Diario";
             this.tabPorDia.UseVisualStyleBackColor = true;
@@ -583,7 +583,7 @@
             this.tabConteo.Location = new System.Drawing.Point(4, 22);
             this.tabConteo.Name = "tabConteo";
             this.tabConteo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConteo.Size = new System.Drawing.Size(404, 632);
+            this.tabConteo.Size = new System.Drawing.Size(412, 632);
             this.tabConteo.TabIndex = 1;
             this.tabConteo.Text = "Areas";
             this.tabConteo.UseVisualStyleBackColor = true;
@@ -625,7 +625,7 @@
             // 
             // btn_KML_MAX
             // 
-            this.btn_KML_MAX.Location = new System.Drawing.Point(269, 425);
+            this.btn_KML_MAX.Location = new System.Drawing.Point(273, 469);
             this.btn_KML_MAX.Name = "btn_KML_MAX";
             this.btn_KML_MAX.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_MAX.TabIndex = 30;
@@ -635,7 +635,7 @@
             // 
             // btn_KML_AVG
             // 
-            this.btn_KML_AVG.Location = new System.Drawing.Point(158, 425);
+            this.btn_KML_AVG.Location = new System.Drawing.Point(160, 469);
             this.btn_KML_AVG.Name = "btn_KML_AVG";
             this.btn_KML_AVG.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_AVG.TabIndex = 29;
@@ -682,7 +682,7 @@
             this.tabBorders.Controls.Add(this.panel3);
             this.tabBorders.Location = new System.Drawing.Point(4, 22);
             this.tabBorders.Name = "tabBorders";
-            this.tabBorders.Size = new System.Drawing.Size(404, 632);
+            this.tabBorders.Size = new System.Drawing.Size(412, 632);
             this.tabBorders.TabIndex = 2;
             this.tabBorders.Text = "Fronteras";
             this.tabBorders.UseVisualStyleBackColor = true;
@@ -711,7 +711,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(276, 59);
+            this.label10.Location = new System.Drawing.Point(257, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 32;
@@ -731,7 +731,7 @@
             // 
             this.dtp_FinalBordes.CustomFormat = "";
             this.dtp_FinalBordes.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_FinalBordes.Location = new System.Drawing.Point(258, 75);
+            this.dtp_FinalBordes.Location = new System.Drawing.Point(240, 70);
             this.dtp_FinalBordes.Name = "dtp_FinalBordes";
             this.dtp_FinalBordes.Size = new System.Drawing.Size(115, 20);
             this.dtp_FinalBordes.TabIndex = 30;
@@ -751,7 +751,7 @@
             // 
             this.dtp_InicialBordes.CustomFormat = "";
             this.dtp_InicialBordes.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_InicialBordes.Location = new System.Drawing.Point(258, 35);
+            this.dtp_InicialBordes.Location = new System.Drawing.Point(240, 30);
             this.dtp_InicialBordes.Name = "dtp_InicialBordes";
             this.dtp_InicialBordes.Size = new System.Drawing.Size(115, 20);
             this.dtp_InicialBordes.TabIndex = 29;
@@ -780,7 +780,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(279, 17);
+            this.label12.Location = new System.Drawing.Point(253, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 31;
@@ -927,7 +927,7 @@
             this.tabSubir.Controls.Add(this.label14);
             this.tabSubir.Location = new System.Drawing.Point(4, 22);
             this.tabSubir.Name = "tabSubir";
-            this.tabSubir.Size = new System.Drawing.Size(404, 632);
+            this.tabSubir.Size = new System.Drawing.Size(412, 632);
             this.tabSubir.TabIndex = 3;
             this.tabSubir.Text = "Subir Datos";
             this.tabSubir.UseVisualStyleBackColor = true;
@@ -953,7 +953,7 @@
             this.lbl_fechaArchivo.AutoSize = true;
             this.lbl_fechaArchivo.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fechaArchivo.ForeColor = System.Drawing.Color.Red;
-            this.lbl_fechaArchivo.Location = new System.Drawing.Point(188, 4);
+            this.lbl_fechaArchivo.Location = new System.Drawing.Point(227, 4);
             this.lbl_fechaArchivo.Name = "lbl_fechaArchivo";
             this.lbl_fechaArchivo.Size = new System.Drawing.Size(22, 21);
             this.lbl_fechaArchivo.TabIndex = 23;
@@ -1032,9 +1032,9 @@
             // 
             // btn_GuardarDB
             // 
-            this.btn_GuardarDB.Location = new System.Drawing.Point(161, 28);
+            this.btn_GuardarDB.Location = new System.Drawing.Point(231, 28);
             this.btn_GuardarDB.Name = "btn_GuardarDB";
-            this.btn_GuardarDB.Size = new System.Drawing.Size(115, 24);
+            this.btn_GuardarDB.Size = new System.Drawing.Size(138, 32);
             this.btn_GuardarDB.TabIndex = 15;
             this.btn_GuardarDB.Text = "Guardar en BD";
             this.btn_GuardarDB.UseVisualStyleBackColor = true;
@@ -1044,7 +1044,7 @@
             // 
             this.btn_leer.Location = new System.Drawing.Point(19, 28);
             this.btn_leer.Name = "btn_leer";
-            this.btn_leer.Size = new System.Drawing.Size(115, 24);
+            this.btn_leer.Size = new System.Drawing.Size(138, 32);
             this.btn_leer.TabIndex = 14;
             this.btn_leer.Text = "Leer Archivo";
             this.btn_leer.UseVisualStyleBackColor = true;
@@ -1107,7 +1107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 799);
+            this.ClientSize = new System.Drawing.Size(436, 770);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
