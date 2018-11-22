@@ -71,7 +71,10 @@ namespace LightningStrikes_Conelectricas
             cb_cooperativa.SelectedIndex = 2;
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
-            cb_cooperativaArea.DataSource = dataSource;
+            var dataSource2 = new List<Cooperativa>();
+            dataSource2 = dataSource.ToList();
+
+            cb_cooperativaArea.DataSource = dataSource2;
             cb_cooperativaArea.DisplayMember = "Name";
             cb_cooperativaArea.ValueMember = "Value";
             cb_cooperativaArea.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -247,6 +250,27 @@ namespace LightningStrikes_Conelectricas
             lbl_cargandoFechas.Visible = false;
             lbl_cargandoFechas.Update();
         }
+        private void dgv_lightningByMonth_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            btn_CrearCSV.Enabled = true;
+            btn_crearKMLpoints.Enabled = false;
+            lbl_cargandoFechas.Visible = true;
+            lbl_cargandoFechas.BringToFront();
+            lbl_cargandoFechas.Update();
+            fechaCSV = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
+            fechaCSV = fecha.Date.ToString("MM_yyyy");
+            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 2);
+            dgv_lightningAll.ClearSelection();
+            dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
+
+            lbl_cargandoFechas.Visible = false;
+            lbl_cargandoFechas.Update();
+            lbl_DescargasDiariasCount.Text = dgv_lightningAll.Rows.Count.ToString();
+        }
 
         private void dgv_lightningByDay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -254,19 +278,19 @@ namespace LightningStrikes_Conelectricas
 
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = true;
-            fechaCSV = dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value.ToString();
             lbl_cargandoFechas.Visible = true;
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
 
             DateTime fecha = (DateTime)dgv_lightningByDay.Rows[e.RowIndex].Cells[0].Value;
             fechaCSV = fecha.Date.ToString("dd_MM_yyyy");
-            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID);
+            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 1);
             dgv_lightningAll.ClearSelection();
             dgv_lightningAll.Sort(dgv_lightningAll.Columns[0],ListSortDirection.Ascending);
 
             lbl_cargandoFechas.Visible = false;
             lbl_cargandoFechas.Update();
+            lbl_DescargasDiariasCount.Text = dgv_lightningAll.Rows.Count.ToString();
         }
 
         private void btn_crearKMLpoints_Click(object sender, EventArgs e)

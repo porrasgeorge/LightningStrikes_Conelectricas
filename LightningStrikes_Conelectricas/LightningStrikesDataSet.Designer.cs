@@ -3448,13 +3448,14 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicial", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cooperativa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Periodo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LightningStrikesDataSet.GetAllLightningsDataTable GetData(global::System.Nullable<global::System.DateTime> FechaInicial, global::System.Nullable<int> Cooperativa) {
+        public virtual LightningStrikesDataSet.GetAllLightningsDataTable GetData(global::System.Nullable<global::System.DateTime> FechaInicial, global::System.Nullable<int> Cooperativa, global::System.Nullable<int> Periodo) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((FechaInicial.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FechaInicial.Value));
@@ -3467,6 +3468,12 @@ namespace LightningStrikes_Conelectricas.LightningStrikesDataSetTableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Periodo.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(Periodo.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             LightningStrikesDataSet.GetAllLightningsDataTable dataTable = new LightningStrikesDataSet.GetAllLightningsDataTable();
             this.Adapter.Fill(dataTable);
