@@ -51,30 +51,44 @@ namespace LightningStrikes_Conelectricas
         {
             InitializeComponent();
 
-            var dataSource = new List<Cooperativa>();
             btn_CrearCSV.Enabled = false;
             btn_crearKMLpoints.Enabled = false;
             dtp_Inicial.Value = DateTime.Today.AddDays(-1);
             dtp_final.Value = DateTime.Today;
-            dataSource.Add(new Cooperativa() { Name = "Coopeguanacaste",    Value = "1" });
-            dataSource.Add(new Cooperativa() { Name = "Coopelesca",         Value = "2" });
-            dataSource.Add(new Cooperativa() { Name = "Coopealfaroruiz",    Value = "3" });
-            dataSource.Add(new Cooperativa() { Name = "Coopesantos",        Value = "4" });
-            dataSource.Add(new Cooperativa() { Name = "Canalete_Miravalles", Value = "5" });
-            dataSource.Add(new Cooperativa() { Name = "ESPH",               Value = "6" });
-            dataSource.Add(new Cooperativa() { Name = "Costa Rica",         Value = "7" });
-            dataSource.Add(new Cooperativa() { Name = "Santa Rosa Pocosol", Value = "8" });
 
-            cb_cooperativa.DataSource = dataSource;
+            string conString = "Data Source=192.168.4.2;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
+            SqlConnection conn = new SqlConnection(conString);
+            DataSet ds = new DataSet();
+            DataSet ds2 = new DataSet();
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT Id as Value, Name from Locations order by Id", conn);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                da.Fill(ds2);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de Conexion a la BD");
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
+            cb_cooperativa.DataSource = ds.Tables[0];
             cb_cooperativa.DisplayMember = "Name";
             cb_cooperativa.ValueMember = "Value";
             cb_cooperativa.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_cooperativa.SelectedIndex = 1;
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
-            var dataSource2 = new List<Cooperativa>();
-            dataSource2 = dataSource.ToList();
-            cb_cooperativaArea.DataSource = dataSource2;
+            cb_cooperativaArea.DataSource = ds2.Tables[0];
             cb_cooperativaArea.DisplayMember = "Name";
             cb_cooperativaArea.ValueMember = "Value";
             cb_cooperativaArea.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -259,7 +273,7 @@ namespace LightningStrikes_Conelectricas
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
             btn_CrearCSV.Enabled = true;
-            btn_crearKMLpoints.Enabled = false;
+            btn_crearKMLpoints.Enabled = true;
             lbl_cargandoFechas.Visible = true;
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
@@ -477,7 +491,7 @@ namespace LightningStrikes_Conelectricas
             lineas.Add("</kml>");
 
             string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
-            string nombreArchivo = NombreCoop + " - " + fechaCSV ;
+            string nombreArchivo = NombreCoop.Trim() + " - " + fechaCSV ;
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -973,7 +987,7 @@ namespace LightningStrikes_Conelectricas
 
                 lineas.Add("\t</Document>");
                 lineas.Add("</kml>");
-                string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
+                string NombreCoop = this.cb_cooperativaArea.GetItemText(this.cb_cooperativaArea.SelectedItem);
                 string str3D = "";
                 string str_botonPresionado = "";
                 if (is3D)
@@ -988,7 +1002,7 @@ namespace LightningStrikes_Conelectricas
                 else
                     str_botonPresionado = "Cantidad";
 
-                string nombreArchivo = NombreCoop + " (" + str_botonPresionado+ ") " + fechaInicial.ToString("ddMMyyyy") + "-" + fechaFinal.ToString("ddMMyyyy") + "_" + str3D;
+                string nombreArchivo = NombreCoop.Trim() + " (" + str_botonPresionado+ ") " + fechaInicial.ToString("ddMMyyyy") + "-" + fechaFinal.ToString("ddMMyyyy") + "_" + str3D;
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -1028,7 +1042,7 @@ namespace LightningStrikes_Conelectricas
             }
 
             string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
-            string nombreArchivo = NombreCoop + " - " + fechaCSV;
+            string nombreArchivo = NombreCoop.Trim() + " - " + fechaCSV;
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -1557,6 +1571,11 @@ namespace LightningStrikes_Conelectricas
         private void dgv_lightningAll_DataSourceChanged(object sender, EventArgs e)
         {
             lbl_DescargasDiariasCount.Text = dgv_lightningAll.Rows.Count.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
