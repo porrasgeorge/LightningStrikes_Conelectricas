@@ -1349,7 +1349,7 @@ namespace LightningStrikes_Conelectricas
                 //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 openFileDialog.RestoreDirectory = true;
                 openFileDialog.Filter = "txt files (*.txt)|*.txt|dat files (*.dat)|*.dat|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 1;
+                openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
                 //openFileDialog.Multiselect = true;
 
