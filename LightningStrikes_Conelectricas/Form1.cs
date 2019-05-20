@@ -1396,6 +1396,7 @@ namespace LightningStrikes_Conelectricas
                                     bool longitud_OK = false;
                                     bool amplitud_OK = false;
                                     bool altura_OK = false;
+                                    bool omitirLinea = false;
 
                                     if (columnas.Length > 4)
                                     {
@@ -1404,10 +1405,14 @@ namespace LightningStrikes_Conelectricas
                                         longitud_OK = Double.TryParse(columnas[2], out longitud);
                                         amplitud_OK = Double.TryParse(columnas[3], out amplitud);
                                         altura_OK = Double.TryParse(columnas[4], out altura);
+                                        omitirLinea = false;
 
                                     }
+                                    else{
+                                        omitirLinea = true;
+                                    }
 
-                                    if (latitud_OK && longitud_OK && Fecha_Ok && amplitud_OK)
+                                    if (latitud_OK && longitud_OK && Fecha_Ok && amplitud_OK && !omitirLinea)
                                     {
                                         //log += "Linea " + Convert.ToString(counter + 1) + " OK";
                                         Fecha = Fecha.AddHours(-6);
@@ -1428,8 +1433,8 @@ namespace LightningStrikes_Conelectricas
                                     }
                                     else
                                     {
-                                        log += Convert.ToString(counter + 1) + " ERRONEA\r\n";
-                                        formatoCorrectoBool = false;
+                                        log += "Linea " + Convert.ToString(counter + 1) + " ERRONEA\r\n";
+                                        //formatoCorrectoBool = false;
                                     }
 
                                 }
