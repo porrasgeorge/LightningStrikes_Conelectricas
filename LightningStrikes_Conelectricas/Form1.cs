@@ -56,7 +56,7 @@ namespace LightningStrikes_Conelectricas
             dtp_Inicial.Value = DateTime.Today.AddDays(-1);
             dtp_final.Value = DateTime.Today;
 
-            string conString = "Data Source=192.168.4.2;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
+            string conString = "Data Source=192.168.4.11;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
             SqlConnection conn = new SqlConnection(conString);
             DataSet ds = new DataSet();
             DataSet ds2 = new DataSet();
@@ -1505,7 +1505,7 @@ namespace LightningStrikes_Conelectricas
             {
                 string connetionString = null;
                 SqlConnection cnn;
-                connetionString = "Data Source=192.168.4.2;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
+                connetionString = "Data Source=192.168.4.11;Initial Catalog=LightningStrikes;User ID=jorge;Password=ERR100189";
                 cnn = new SqlConnection(connetionString);
                 try
                 {

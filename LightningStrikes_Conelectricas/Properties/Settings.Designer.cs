@@ -26,8 +26,8 @@ namespace LightningStrikes_Conelectricas.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.4.2;Initial Catalog=LightningStrikes;Persist Security Info=Tr" +
-            "ue;User ID=jorge;Password=ERR100189")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.4.11;Initial Catalog=LightningStrikes;Persist Security Info=T" +
+            "rue;User ID=jorge;Password=ERR100189")]
         public string LightningStrikesConnectionString {
             get {
                 return ((string)(this["LightningStrikesConnectionString"]));
