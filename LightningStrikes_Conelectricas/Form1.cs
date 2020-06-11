@@ -1582,5 +1582,28 @@ namespace LightningStrikes_Conelectricas
         {
 
         }
+
+        private void dgv_lightningByMonth_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            { 
+                if (e.RowIndex == -1) return;
+                cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+
+                btn_CrearCSV.Enabled = true;
+                btn_crearKMLpoints.Enabled = true;
+                lbl_cargandoFechas.Visible = true;
+                lbl_cargandoFechas.BringToFront();
+                lbl_cargandoFechas.Update();
+                DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
+                fechaCSV = fecha.Date.ToString("yyyy");
+                dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 3);
+                dgv_lightningAll.ClearSelection();
+                dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
+
+                lbl_cargandoFechas.Visible = false;
+                lbl_cargandoFechas.Update();
+            }
+        }
     }
 }
