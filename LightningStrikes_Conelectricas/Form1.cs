@@ -53,6 +53,7 @@ namespace LightningStrikes_Conelectricas
 
             btn_CrearCSV.Enabled = false;
             btn_crearKMLpoints.Enabled = false;
+            btn_crear_kml_dateorder.Enabled = false;
             dtp_Inicial.Value = DateTime.Today.AddDays(-1);
             dtp_final.Value = DateTime.Today;
 
@@ -255,6 +256,7 @@ namespace LightningStrikes_Conelectricas
 
             btn_CrearCSV.Enabled = false;
             btn_crearKMLpoints.Enabled = false;
+            btn_crear_kml_dateorder.Enabled = false;
             lbl_cargandoFechas.Visible = true;
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
@@ -269,24 +271,25 @@ namespace LightningStrikes_Conelectricas
         }
         private void dgv_lightningByMonth_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1) return;
-            cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+            //if (e.RowIndex == -1) return;
+            //cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
-            btn_CrearCSV.Enabled = true;
-            btn_crearKMLpoints.Enabled = true;
-            lbl_cargandoFechas.Visible = true;
-            lbl_cargandoFechas.BringToFront();
-            lbl_cargandoFechas.Update();
-            fechaCSV = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //btn_CrearCSV.Enabled = true;
+            //btn_crearKMLpoints.Enabled = true;
+            //btn_crear_kml_dateorder.Enabled = true;
+            //lbl_cargandoFechas.Visible = true;
+            //lbl_cargandoFechas.BringToFront();
+            //lbl_cargandoFechas.Update();
+            //fechaCSV = dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
-            fechaCSV = fecha.Date.ToString("MM_yyyy");
-            dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 2);
-            dgv_lightningAll.ClearSelection();
-            dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
+            //DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
+            //fechaCSV = fecha.Date.ToString("MM_yyyy");
+            //dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 2);
+            //dgv_lightningAll.ClearSelection();
+            //dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
 
-            lbl_cargandoFechas.Visible = false;
-            lbl_cargandoFechas.Update();
+            //lbl_cargandoFechas.Visible = false;
+            //lbl_cargandoFechas.Update();
             
         }
 
@@ -296,6 +299,7 @@ namespace LightningStrikes_Conelectricas
             cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
             btn_CrearCSV.Enabled = true;
             btn_crearKMLpoints.Enabled = true;
+            btn_crear_kml_dateorder.Enabled = true;
             lbl_cargandoFechas.Visible = true;
             lbl_cargandoFechas.BringToFront();
             lbl_cargandoFechas.Update();
@@ -1585,25 +1589,240 @@ namespace LightningStrikes_Conelectricas
 
         private void dgv_lightningByMonth_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            { 
-                if (e.RowIndex == -1) return;
-                cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
+            //if (e.Button == MouseButtons.Right)
+            //{ 
+            //    if (e.RowIndex == -1) return;
+            //    cooperativaID = Convert.ToInt32(cb_cooperativa.SelectedValue.ToString());
 
-                btn_CrearCSV.Enabled = true;
-                btn_crearKMLpoints.Enabled = true;
-                lbl_cargandoFechas.Visible = true;
-                lbl_cargandoFechas.BringToFront();
-                lbl_cargandoFechas.Update();
-                DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
-                fechaCSV = fecha.Date.ToString("yyyy");
-                dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 3);
-                dgv_lightningAll.ClearSelection();
-                dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
+            //    btn_CrearCSV.Enabled = true;
+            //    btn_crearKMLpoints.Enabled = true;
+            //    btn_crear_kml_dateorder.Enabled = true;
+            //    lbl_cargandoFechas.Visible = true;
+            //    lbl_cargandoFechas.BringToFront();
+            //    lbl_cargandoFechas.Update();
+            //    DateTime fecha = (DateTime)dgv_lightningByMonth.Rows[e.RowIndex].Cells[0].Value;
+            //    fechaCSV = fecha.Date.ToString("yyyy");
+            //    dgv_lightningAll.DataSource = this.getAllLightningsTableAdapter.GetData(fecha, cooperativaID, 3);
+            //    dgv_lightningAll.ClearSelection();
+            //    dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
 
-                lbl_cargandoFechas.Visible = false;
-                lbl_cargandoFechas.Update();
+            //    lbl_cargandoFechas.Visible = false;
+            //    lbl_cargandoFechas.Update();
+            //}
+        }
+
+        private void btn_crear_kml_dateorder_Click(object sender, EventArgs e)
+        {
+            lbl_cargandoFechas.Visible = true;
+            lbl_cargandoFechas.Text = "Creando KML";
+            lbl_cargandoFechas.BringToFront();
+            lbl_cargandoFechas.Update();
+
+            List<List<List<LightningStrike>>> ListaRayos = new List<List<List<LightningStrike>>> {};
+
+            for (int i = 0; i<24; i++)
+            {
+                List<List<LightningStrike>> lis_hour = new List<List<LightningStrike>> {};
+                for (int j = 0; j < 12; j++)
+                {
+                    List<LightningStrike> lis_min = new List<LightningStrike> { };
+                    lis_hour.Add(lis_min);
+                }
+                ListaRayos.Add(lis_hour);
             }
+
+            dgv_lightningAll.Sort(dgv_lightningAll.Columns[0], ListSortDirection.Ascending);
+            dgv_lightningAll.Update();
+            foreach (DataGridViewRow row in dgv_lightningAll.Rows)
+            {
+                LightningStrike rayo = new LightningStrike((DateTime)row.Cells[0].Value, (double)row.Cells[2].Value, (double)row.Cells[1].Value, (double)row.Cells[3].Value);
+                int hora = rayo.FechaHora.Hour;
+                int minuto = rayo.FechaHora.Minute/5;
+                ListaRayos.ElementAt(hora).ElementAt(minuto).Add(rayo);
+            }
+
+            List<string> lineas = new List<string>();
+            
+
+            lineas.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            lineas.Add("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+            lineas.Add("\t<Document>");
+            lineas.Add("\t\t<open>1</open>");
+            lineas.Add("\t\t<name>" + fechaCSV + "</name>");
+
+            lineas.Add("\t\t<Style id=\"Color4\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color3\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color2\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color1\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color0\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-blank.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+
+            lineas.Add("\t\t<Style id=\"Color4p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color3p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color2p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color1p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+            lineas.Add("\t\t<Style id=\"Color0p\">");
+            lineas.Add("\t\t\t<LabelStyle> <scale>0</scale></LabelStyle>");
+            lineas.Add("\t\t\t<IconStyle>");
+            lineas.Add("\t\t\t\t<Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon>");
+            lineas.Add("\t\t\t</IconStyle>");
+            lineas.Add("\t\t</Style>");
+
+
+            int iteracion_hora = 0;
+            string fmt = "00";
+            foreach (List<List<LightningStrike>> Lista_Hora in ListaRayos)
+            {
+                List<string> lineas2 = new List<string>();
+                lineas2.Add("\t\t<Folder>");
+                lineas2.Add("\t\t\t<name>" + iteracion_hora.ToString(fmt) + ":00</name>");
+                lineas2.Add("\t\t\t<visibility>1</visibility>");
+                lineas2.Add("\t\t\t<open>0</open>");
+
+                int iteracion_min = 0;
+                Boolean descargas = false;
+
+                foreach (List < LightningStrike > Lista_Minuto in Lista_Hora)
+                {
+                    if (Lista_Minuto.Count > 0)
+                    {
+                        descargas = true;
+                        lineas2.Add("\t\t<Folder>");
+                        lineas2.Add("\t\t\t<name>" + iteracion_hora.ToString(fmt) + ":" + (5*iteracion_min).ToString(fmt) + "</name>");
+                        lineas2.Add("\t\t\t<visibility>1</visibility>");
+                        lineas2.Add("\t\t\t<open>0</open>");
+
+                        foreach (LightningStrike lightning in Lista_Minuto)
+                        {
+                            double Ampl = lightning.amplitud;
+
+                            lineas2.Add("\t\t\t<Placemark>");
+                            lineas2.Add("\t\t\t\t<name>" + Convert.ToString(lightning.FechaHora) + "</name>");
+                            if (Ampl >= 80)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color4p</styleUrl>");
+                            else if (Ampl >= 60)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color3p</styleUrl>");
+                            else if (Ampl >= 40)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color2p</styleUrl>");
+                            else if (Ampl >= 20)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color1p</styleUrl>");
+                            else if (Ampl >= 0)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color0p</styleUrl>");
+                            else if (Ampl > -20)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color0</styleUrl>");
+                            else if (Ampl > -40)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color1</styleUrl>");
+                            else if (Ampl > -60)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color2</styleUrl>");
+                            else if (Ampl > -80)
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color3</styleUrl>");
+                            else
+                                lineas2.Add("\t\t\t\t\t<styleUrl>#Color4</styleUrl>");
+
+                            lineas2.Add("\t\t\t\t<description>Amplitud: " + Convert.ToString(lightning.amplitud) + "kA</description>");
+                            lineas2.Add("\t\t\t\t<Point>");
+                            lineas2.Add("\t\t\t\t\t<coordinates>" + Convert.ToString(lightning.longitud) + "," + Convert.ToString(lightning.latitud) + "</coordinates>");
+                            lineas2.Add("\t\t\t\t</Point>");
+                            lineas2.Add("\t\t\t</Placemark>");
+                        }
+                        lineas2.Add("\t\t</Folder>");
+                    }
+
+                    iteracion_min++;
+                }
+
+                    
+                lineas2.Add("\t\t</Folder>");
+
+                if (descargas)
+                {
+                    lineas.AddRange(lineas2);
+                }
+                descargas = false;
+
+                iteracion_hora++;
+            }
+
+            lineas.Add("\t</Document>");
+            lineas.Add("</kml>");
+
+            string NombreCoop = this.cb_cooperativa.GetItemText(this.cb_cooperativa.SelectedItem);
+            string nombreArchivo = NombreCoop.Trim() + " - " + fechaCSV;
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.FileName = nombreArchivo;
+            saveFileDialog1.CheckFileExists = false;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "kml";
+            saveFileDialog1.Filter = "KML files (*.kml)|*.kml|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                nombreArchivo = saveFileDialog1.FileName;
+                System.IO.File.WriteAllLines(nombreArchivo, lineas);
+                MessageBox.Show(nombreArchivo + " \n\nCREADO SATISFACTORIAMENTE", "KML");
+            }
+
+
+            lbl_cargandoFechas.Visible = false;
+            lbl_cargandoFechas.Text = "Cargando ......";
+            lbl_cargandoFechas.Update();
         }
     }
 }
