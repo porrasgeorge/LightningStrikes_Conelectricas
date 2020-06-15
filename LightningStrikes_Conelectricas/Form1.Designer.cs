@@ -159,10 +159,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LightningStrikes_Conelectricas.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(624, 140);
+            this.pictureBox1.Size = new System.Drawing.Size(416, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -171,10 +170,9 @@
             // 
             this.dtp_Inicial.CustomFormat = "";
             this.dtp_Inicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Inicial.Location = new System.Drawing.Point(360, 46);
-            this.dtp_Inicial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtp_Inicial.Location = new System.Drawing.Point(240, 30);
             this.dtp_Inicial.Name = "dtp_Inicial";
-            this.dtp_Inicial.Size = new System.Drawing.Size(170, 26);
+            this.dtp_Inicial.Size = new System.Drawing.Size(115, 20);
             this.dtp_Inicial.TabIndex = 1;
             this.dtp_Inicial.ValueChanged += new System.EventHandler(this.dtp_Inicial_ValueChanged);
             // 
@@ -182,40 +180,36 @@
             // 
             this.dtp_final.CustomFormat = "";
             this.dtp_final.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_final.Location = new System.Drawing.Point(360, 108);
-            this.dtp_final.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtp_final.Location = new System.Drawing.Point(240, 70);
             this.dtp_final.Name = "dtp_final";
-            this.dtp_final.Size = new System.Drawing.Size(170, 26);
+            this.dtp_final.Size = new System.Drawing.Size(115, 20);
             this.dtp_final.TabIndex = 2;
             this.dtp_final.ValueChanged += new System.EventHandler(this.dtp_final_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(380, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(253, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Fecha Inicial  >=";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(386, 86);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(257, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Fecha Final  <";
             // 
             // cb_cooperativa
             // 
             this.cb_cooperativa.FormattingEnabled = true;
-            this.cb_cooperativa.Location = new System.Drawing.Point(165, 77);
-            this.cb_cooperativa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cb_cooperativa.Location = new System.Drawing.Point(110, 50);
             this.cb_cooperativa.Name = "cb_cooperativa";
-            this.cb_cooperativa.Size = new System.Drawing.Size(277, 28);
+            this.cb_cooperativa.Size = new System.Drawing.Size(186, 21);
             this.cb_cooperativa.TabIndex = 5;
             this.cb_cooperativa.SelectionChangeCommitted += new System.EventHandler(this.cb_cooperativa_SelectionChangeCommitted);
             // 
@@ -223,10 +217,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(180, 38);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(120, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(242, 29);
+            this.label3.Size = new System.Drawing.Size(166, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cooperativa / Lugar";
             // 
@@ -245,14 +238,13 @@
             this.AVG_Amp,
             this.MAX_Amp});
             this.dgv_lightningZones.DataSource = this.getLightningsBindingSource;
-            this.dgv_lightningZones.Location = new System.Drawing.Point(22, 71);
-            this.dgv_lightningZones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_lightningZones.Location = new System.Drawing.Point(15, 46);
             this.dgv_lightningZones.Name = "dgv_lightningZones";
             this.dgv_lightningZones.ReadOnly = true;
             this.dgv_lightningZones.RowHeadersVisible = false;
             this.dgv_lightningZones.RowHeadersWidth = 62;
             this.dgv_lightningZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningZones.Size = new System.Drawing.Size(525, 623);
+            this.dgv_lightningZones.Size = new System.Drawing.Size(350, 405);
             this.dgv_lightningZones.TabIndex = 7;
             // 
             // cantidadDataGridViewTextBoxColumn1
@@ -312,10 +304,9 @@
             // 
             // btn_KML_Descargas
             // 
-            this.btn_KML_Descargas.Location = new System.Drawing.Point(70, 722);
-            this.btn_KML_Descargas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_KML_Descargas.Location = new System.Drawing.Point(47, 469);
             this.btn_KML_Descargas.Name = "btn_KML_Descargas";
-            this.btn_KML_Descargas.Size = new System.Drawing.Size(138, 52);
+            this.btn_KML_Descargas.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_Descargas.TabIndex = 8;
             this.btn_KML_Descargas.Text = "KML Descargas";
             this.btn_KML_Descargas.UseVisualStyleBackColor = true;
@@ -326,10 +317,9 @@
             this.Check3D.AutoSize = true;
             this.Check3D.Checked = true;
             this.Check3D.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Check3D.Location = new System.Drawing.Point(22, 746);
-            this.Check3D.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Check3D.Location = new System.Drawing.Point(15, 485);
             this.Check3D.Name = "Check3D";
-            this.Check3D.Size = new System.Drawing.Size(22, 21);
+            this.Check3D.Size = new System.Drawing.Size(15, 14);
             this.Check3D.TabIndex = 9;
             this.Check3D.UseVisualStyleBackColor = true;
             // 
@@ -337,10 +327,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(18, 722);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(12, 469);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 20);
+            this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "3D";
             // 
@@ -354,15 +343,14 @@
             this.fechaDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn2});
             this.dgv_lightningByDay.DataSource = this.countLightningsByDayBindingSource;
-            this.dgv_lightningByDay.Location = new System.Drawing.Point(303, 45);
-            this.dgv_lightningByDay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_lightningByDay.Location = new System.Drawing.Point(202, 29);
             this.dgv_lightningByDay.MultiSelect = false;
             this.dgv_lightningByDay.Name = "dgv_lightningByDay";
             this.dgv_lightningByDay.ReadOnly = true;
             this.dgv_lightningByDay.RowHeadersVisible = false;
             this.dgv_lightningByDay.RowHeadersWidth = 62;
             this.dgv_lightningByDay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningByDay.Size = new System.Drawing.Size(246, 285);
+            this.dgv_lightningByDay.Size = new System.Drawing.Size(164, 185);
             this.dgv_lightningByDay.TabIndex = 18;
             this.dgv_lightningByDay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByDay_CellClick);
             // 
@@ -391,10 +379,9 @@
             // 
             // btn_CrearCSV
             // 
-            this.btn_CrearCSV.Location = new System.Drawing.Point(24, 722);
-            this.btn_CrearCSV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_CrearCSV.Location = new System.Drawing.Point(16, 469);
             this.btn_CrearCSV.Name = "btn_CrearCSV";
-            this.btn_CrearCSV.Size = new System.Drawing.Size(130, 52);
+            this.btn_CrearCSV.Size = new System.Drawing.Size(87, 34);
             this.btn_CrearCSV.TabIndex = 19;
             this.btn_CrearCSV.Text = "Crear CSV";
             this.btn_CrearCSV.UseVisualStyleBackColor = true;
@@ -407,10 +394,9 @@
             this.lbl_cargandoFechas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_cargandoFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cargandoFechas.ForeColor = System.Drawing.Color.Red;
-            this.lbl_cargandoFechas.Location = new System.Drawing.Point(66, 551);
-            this.lbl_cargandoFechas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_cargandoFechas.Location = new System.Drawing.Point(44, 358);
             this.lbl_cargandoFechas.Name = "lbl_cargandoFechas";
-            this.lbl_cargandoFechas.Size = new System.Drawing.Size(401, 66);
+            this.lbl_cargandoFechas.Size = new System.Drawing.Size(270, 44);
             this.lbl_cargandoFechas.TabIndex = 20;
             this.lbl_cargandoFechas.Text = "Cargando ......";
             this.lbl_cargandoFechas.Visible = false;
@@ -419,10 +405,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(322, 9);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(215, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(206, 29);
+            this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 21;
             this.label5.Text = "Descargas diarias";
             // 
@@ -430,10 +415,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(150, 358);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(100, 233);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(279, 29);
+            this.label6.Size = new System.Drawing.Size(184, 20);
             this.label6.TabIndex = 22;
             this.label6.Text = "Descargas por ubicación";
             // 
@@ -443,11 +427,10 @@
             this.tabControl1.Controls.Add(this.tabConteo);
             this.tabControl1.Controls.Add(this.tabBorders);
             this.tabControl1.Controls.Add(this.tabSubir);
-            this.tabControl1.Location = new System.Drawing.Point(12, 168);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl1.Location = new System.Drawing.Point(8, 109);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(630, 1012);
+            this.tabControl1.Size = new System.Drawing.Size(420, 658);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPorDia
@@ -455,11 +438,10 @@
             this.tabPorDia.Controls.Add(this.panel_datos);
             this.tabPorDia.Controls.Add(this.label3);
             this.tabPorDia.Controls.Add(this.cb_cooperativa);
-            this.tabPorDia.Location = new System.Drawing.Point(4, 29);
-            this.tabPorDia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPorDia.Location = new System.Drawing.Point(4, 22);
             this.tabPorDia.Name = "tabPorDia";
-            this.tabPorDia.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPorDia.Size = new System.Drawing.Size(622, 979);
+            this.tabPorDia.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPorDia.Size = new System.Drawing.Size(412, 632);
             this.tabPorDia.TabIndex = 0;
             this.tabPorDia.Text = "Diario";
             this.tabPorDia.UseVisualStyleBackColor = true;
@@ -478,18 +460,16 @@
             this.panel_datos.Controls.Add(this.label6);
             this.panel_datos.Controls.Add(this.label5);
             this.panel_datos.Controls.Add(this.btn_CrearCSV);
-            this.panel_datos.Location = new System.Drawing.Point(15, 169);
-            this.panel_datos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel_datos.Location = new System.Drawing.Point(10, 110);
             this.panel_datos.Name = "panel_datos";
-            this.panel_datos.Size = new System.Drawing.Size(584, 799);
+            this.panel_datos.Size = new System.Drawing.Size(390, 520);
             this.panel_datos.TabIndex = 25;
             // 
             // btn_crear_kml_dateorder
             // 
-            this.btn_crear_kml_dateorder.Location = new System.Drawing.Point(417, 722);
-            this.btn_crear_kml_dateorder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_crear_kml_dateorder.Location = new System.Drawing.Point(278, 469);
             this.btn_crear_kml_dateorder.Name = "btn_crear_kml_dateorder";
-            this.btn_crear_kml_dateorder.Size = new System.Drawing.Size(130, 52);
+            this.btn_crear_kml_dateorder.Size = new System.Drawing.Size(87, 34);
             this.btn_crear_kml_dateorder.TabIndex = 29;
             this.btn_crear_kml_dateorder.Text = "KML por Fecha/Hora";
             this.btn_crear_kml_dateorder.UseVisualStyleBackColor = true;
@@ -499,19 +479,17 @@
             // 
             this.lbl_DescargasDiariasCount.AutoSize = true;
             this.lbl_DescargasDiariasCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DescargasDiariasCount.Location = new System.Drawing.Point(444, 358);
-            this.lbl_DescargasDiariasCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_DescargasDiariasCount.Location = new System.Drawing.Point(296, 233);
             this.lbl_DescargasDiariasCount.Name = "lbl_DescargasDiariasCount";
-            this.lbl_DescargasDiariasCount.Size = new System.Drawing.Size(26, 29);
+            this.lbl_DescargasDiariasCount.Size = new System.Drawing.Size(18, 20);
             this.lbl_DescargasDiariasCount.TabIndex = 28;
             this.lbl_DescargasDiariasCount.Text = "0";
             // 
             // btn_crearKMLpoints
             // 
-            this.btn_crearKMLpoints.Location = new System.Drawing.Point(220, 722);
-            this.btn_crearKMLpoints.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_crearKMLpoints.Location = new System.Drawing.Point(147, 469);
             this.btn_crearKMLpoints.Name = "btn_crearKMLpoints";
-            this.btn_crearKMLpoints.Size = new System.Drawing.Size(130, 52);
+            this.btn_crearKMLpoints.Size = new System.Drawing.Size(87, 34);
             this.btn_crearKMLpoints.TabIndex = 27;
             this.btn_crearKMLpoints.Text = "KML por Amplitud";
             this.btn_crearKMLpoints.UseVisualStyleBackColor = true;
@@ -529,15 +507,14 @@
             this.latitudDataGridViewTextBoxColumn1,
             this.amplitudDataGridViewTextBoxColumn});
             this.dgv_lightningAll.DataSource = this.getAllLightningsBindingSource;
-            this.dgv_lightningAll.Location = new System.Drawing.Point(24, 394);
-            this.dgv_lightningAll.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_lightningAll.Location = new System.Drawing.Point(16, 256);
             this.dgv_lightningAll.MultiSelect = false;
             this.dgv_lightningAll.Name = "dgv_lightningAll";
             this.dgv_lightningAll.ReadOnly = true;
             this.dgv_lightningAll.RowHeadersVisible = false;
             this.dgv_lightningAll.RowHeadersWidth = 62;
             this.dgv_lightningAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningAll.Size = new System.Drawing.Size(525, 318);
+            this.dgv_lightningAll.Size = new System.Drawing.Size(350, 207);
             this.dgv_lightningAll.TabIndex = 26;
             this.dgv_lightningAll.DataSourceChanged += new System.EventHandler(this.dgv_lightningAll_DataSourceChanged);
             // 
@@ -592,8 +569,7 @@
             this.mesDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn});
             this.dgv_lightningByMonth.DataSource = this.countLightningsByMonthBindingSource;
-            this.dgv_lightningByMonth.Location = new System.Drawing.Point(24, 45);
-            this.dgv_lightningByMonth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_lightningByMonth.Location = new System.Drawing.Point(16, 29);
             this.dgv_lightningByMonth.MultiSelect = false;
             this.dgv_lightningByMonth.Name = "dgv_lightningByMonth";
             this.dgv_lightningByMonth.ReadOnly = true;
@@ -601,7 +577,7 @@
             this.dgv_lightningByMonth.RowHeadersVisible = false;
             this.dgv_lightningByMonth.RowHeadersWidth = 62;
             this.dgv_lightningByMonth.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_lightningByMonth.Size = new System.Drawing.Size(225, 285);
+            this.dgv_lightningByMonth.Size = new System.Drawing.Size(150, 185);
             this.dgv_lightningByMonth.TabIndex = 23;
             this.dgv_lightningByMonth.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByMonth_CellClick);
             this.dgv_lightningByMonth.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lightningByMonth_CellDoubleClick);
@@ -635,10 +611,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(12, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(251, 29);
+            this.label7.Size = new System.Drawing.Size(167, 20);
             this.label7.TabIndex = 25;
             this.label7.Text = "Descargas mensuales";
             // 
@@ -651,11 +626,10 @@
             this.tabConteo.Controls.Add(this.label1);
             this.tabConteo.Controls.Add(this.cb_cooperativaArea);
             this.tabConteo.Controls.Add(this.panel2);
-            this.tabConteo.Location = new System.Drawing.Point(4, 29);
-            this.tabConteo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabConteo.Location = new System.Drawing.Point(4, 22);
             this.tabConteo.Name = "tabConteo";
-            this.tabConteo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConteo.Size = new System.Drawing.Size(622, 979);
+            this.tabConteo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabConteo.Size = new System.Drawing.Size(412, 632);
             this.tabConteo.TabIndex = 1;
             this.tabConteo.Text = "Areas";
             this.tabConteo.UseVisualStyleBackColor = true;
@@ -664,20 +638,18 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(98, 54);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(65, 35);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(143, 29);
+            this.label9.Size = new System.Drawing.Size(88, 18);
             this.label9.TabIndex = 28;
             this.label9.Text = "Cooperativa";
             // 
             // cb_cooperativaArea
             // 
             this.cb_cooperativaArea.FormattingEnabled = true;
-            this.cb_cooperativaArea.Location = new System.Drawing.Point(62, 86);
-            this.cb_cooperativaArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cb_cooperativaArea.Location = new System.Drawing.Point(41, 56);
             this.cb_cooperativaArea.Name = "cb_cooperativaArea";
-            this.cb_cooperativaArea.Size = new System.Drawing.Size(193, 28);
+            this.cb_cooperativaArea.Size = new System.Drawing.Size(130, 21);
             this.cb_cooperativaArea.TabIndex = 27;
             this.cb_cooperativaArea.SelectionChangeCommitted += new System.EventHandler(this.cb_cooperativaArea_SelectionChangeCommitted);
             // 
@@ -692,18 +664,16 @@
             this.panel2.Controls.Add(this.btn_KML_Descargas);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.Check3D);
-            this.panel2.Location = new System.Drawing.Point(15, 169);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(10, 110);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(584, 799);
+            this.panel2.Size = new System.Drawing.Size(390, 520);
             this.panel2.TabIndex = 26;
             // 
             // btn_KML_MAX
             // 
-            this.btn_KML_MAX.Location = new System.Drawing.Point(410, 722);
-            this.btn_KML_MAX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_KML_MAX.Location = new System.Drawing.Point(273, 469);
             this.btn_KML_MAX.Name = "btn_KML_MAX";
-            this.btn_KML_MAX.Size = new System.Drawing.Size(138, 52);
+            this.btn_KML_MAX.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_MAX.TabIndex = 30;
             this.btn_KML_MAX.Text = "KML MAX";
             this.btn_KML_MAX.UseVisualStyleBackColor = true;
@@ -711,10 +681,9 @@
             // 
             // btn_KML_AVG
             // 
-            this.btn_KML_AVG.Location = new System.Drawing.Point(240, 722);
-            this.btn_KML_AVG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_KML_AVG.Location = new System.Drawing.Point(160, 469);
             this.btn_KML_AVG.Name = "btn_KML_AVG";
-            this.btn_KML_AVG.Size = new System.Drawing.Size(138, 52);
+            this.btn_KML_AVG.Size = new System.Drawing.Size(92, 34);
             this.btn_KML_AVG.TabIndex = 29;
             this.btn_KML_AVG.Text = "KML AVG";
             this.btn_KML_AVG.UseVisualStyleBackColor = true;
@@ -727,10 +696,9 @@
             this.lbl_cargandoZonas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_cargandoZonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cargandoZonas.ForeColor = System.Drawing.Color.Red;
-            this.lbl_cargandoZonas.Location = new System.Drawing.Point(106, 365);
-            this.lbl_cargandoZonas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_cargandoZonas.Location = new System.Drawing.Point(71, 237);
             this.lbl_cargandoZonas.Name = "lbl_cargandoZonas";
-            this.lbl_cargandoZonas.Size = new System.Drawing.Size(345, 57);
+            this.lbl_cargandoZonas.Size = new System.Drawing.Size(239, 39);
             this.lbl_cargandoZonas.TabIndex = 28;
             this.lbl_cargandoZonas.Text = "Cargando ......";
             this.lbl_cargandoZonas.Visible = false;
@@ -739,10 +707,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 35);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(11, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(189, 29);
+            this.label8.Size = new System.Drawing.Size(128, 20);
             this.label8.TabIndex = 28;
             this.label8.Text = "Datos por Zonas";
             // 
@@ -759,20 +726,18 @@
             this.tabBorders.Controls.Add(this.label11);
             this.tabBorders.Controls.Add(this.label12);
             this.tabBorders.Controls.Add(this.panel3);
-            this.tabBorders.Location = new System.Drawing.Point(4, 29);
-            this.tabBorders.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabBorders.Location = new System.Drawing.Point(4, 22);
             this.tabBorders.Name = "tabBorders";
-            this.tabBorders.Size = new System.Drawing.Size(622, 979);
+            this.tabBorders.Size = new System.Drawing.Size(412, 632);
             this.tabBorders.TabIndex = 2;
             this.tabBorders.Text = "Fronteras";
             this.tabBorders.UseVisualStyleBackColor = true;
             // 
             // btn_ActualizarBordes
             // 
-            this.btn_ActualizarBordes.Location = new System.Drawing.Point(60, 117);
-            this.btn_ActualizarBordes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_ActualizarBordes.Location = new System.Drawing.Point(40, 76);
             this.btn_ActualizarBordes.Name = "btn_ActualizarBordes";
-            this.btn_ActualizarBordes.Size = new System.Drawing.Size(226, 42);
+            this.btn_ActualizarBordes.Size = new System.Drawing.Size(151, 27);
             this.btn_ActualizarBordes.TabIndex = 31;
             this.btn_ActualizarBordes.Text = "Actualizar";
             this.btn_ActualizarBordes.UseMnemonic = false;
@@ -781,10 +746,9 @@
             // 
             // txt_RIGHT
             // 
-            this.txt_RIGHT.Location = new System.Drawing.Point(216, 48);
-            this.txt_RIGHT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_RIGHT.Location = new System.Drawing.Point(144, 31);
             this.txt_RIGHT.Name = "txt_RIGHT";
-            this.txt_RIGHT.Size = new System.Drawing.Size(68, 26);
+            this.txt_RIGHT.Size = new System.Drawing.Size(47, 20);
             this.txt_RIGHT.TabIndex = 38;
             this.txt_RIGHT.Text = "-84";
             this.txt_RIGHT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -793,19 +757,17 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(386, 86);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(257, 56);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(109, 20);
+            this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 32;
             this.label10.Text = "Fecha Final  <";
             // 
             // txt_UP
             // 
-            this.txt_UP.Location = new System.Drawing.Point(136, 15);
-            this.txt_UP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_UP.Location = new System.Drawing.Point(91, 10);
             this.txt_UP.Name = "txt_UP";
-            this.txt_UP.Size = new System.Drawing.Size(68, 26);
+            this.txt_UP.Size = new System.Drawing.Size(47, 20);
             this.txt_UP.TabIndex = 36;
             this.txt_UP.Text = "11";
             this.txt_UP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -815,19 +777,17 @@
             // 
             this.dtp_FinalBordes.CustomFormat = "";
             this.dtp_FinalBordes.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_FinalBordes.Location = new System.Drawing.Point(360, 108);
-            this.dtp_FinalBordes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtp_FinalBordes.Location = new System.Drawing.Point(240, 70);
             this.dtp_FinalBordes.Name = "dtp_FinalBordes";
-            this.dtp_FinalBordes.Size = new System.Drawing.Size(170, 26);
+            this.dtp_FinalBordes.Size = new System.Drawing.Size(115, 20);
             this.dtp_FinalBordes.TabIndex = 30;
             this.dtp_FinalBordes.ValueChanged += new System.EventHandler(this.dtp_FinalBordes_ValueChanged);
             // 
             // txt_LOW
             // 
-            this.txt_LOW.Location = new System.Drawing.Point(140, 77);
-            this.txt_LOW.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_LOW.Location = new System.Drawing.Point(93, 50);
             this.txt_LOW.Name = "txt_LOW";
-            this.txt_LOW.Size = new System.Drawing.Size(68, 26);
+            this.txt_LOW.Size = new System.Drawing.Size(47, 20);
             this.txt_LOW.TabIndex = 37;
             this.txt_LOW.Text = "10";
             this.txt_LOW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -837,19 +797,17 @@
             // 
             this.dtp_InicialBordes.CustomFormat = "";
             this.dtp_InicialBordes.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_InicialBordes.Location = new System.Drawing.Point(360, 46);
-            this.dtp_InicialBordes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtp_InicialBordes.Location = new System.Drawing.Point(240, 30);
             this.dtp_InicialBordes.Name = "dtp_InicialBordes";
-            this.dtp_InicialBordes.Size = new System.Drawing.Size(170, 26);
+            this.dtp_InicialBordes.Size = new System.Drawing.Size(115, 20);
             this.dtp_InicialBordes.TabIndex = 29;
             this.dtp_InicialBordes.ValueChanged += new System.EventHandler(this.dtp_InicialBordes_ValueChanged);
             // 
             // txt_LEFT
             // 
-            this.txt_LEFT.Location = new System.Drawing.Point(60, 48);
-            this.txt_LEFT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_LEFT.Location = new System.Drawing.Point(40, 31);
             this.txt_LEFT.Name = "txt_LEFT";
-            this.txt_LEFT.Size = new System.Drawing.Size(68, 26);
+            this.txt_LEFT.Size = new System.Drawing.Size(47, 20);
             this.txt_LEFT.TabIndex = 35;
             this.txt_LEFT.Text = "-85";
             this.txt_LEFT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -859,20 +817,18 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(4, 14);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(3, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 29);
+            this.label11.Size = new System.Drawing.Size(55, 18);
             this.label11.TabIndex = 34;
             this.label11.Text = "Limites";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(380, 25);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(253, 16);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 20);
+            this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 31;
             this.label12.Text = "Fecha Inicial  >=";
             // 
@@ -885,10 +841,9 @@
             this.panel3.Controls.Add(this.lbl_cargandoBordes);
             this.panel3.Controls.Add(this.dgv_lightningsBorders);
             this.panel3.Controls.Add(this.btn_CrearKmlBordes);
-            this.panel3.Location = new System.Drawing.Point(15, 169);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(10, 110);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(584, 799);
+            this.panel3.Size = new System.Drawing.Size(390, 520);
             this.panel3.TabIndex = 26;
             // 
             // lbl_Actualizar
@@ -898,10 +853,9 @@
             this.lbl_Actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_Actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Actualizar.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_Actualizar.Location = new System.Drawing.Point(165, 275);
-            this.lbl_Actualizar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Actualizar.Location = new System.Drawing.Point(110, 179);
             this.lbl_Actualizar.Name = "lbl_Actualizar";
-            this.lbl_Actualizar.Size = new System.Drawing.Size(246, 57);
+            this.lbl_Actualizar.Size = new System.Drawing.Size(171, 39);
             this.lbl_Actualizar.TabIndex = 35;
             this.lbl_Actualizar.Text = "Actualizar";
             this.lbl_Actualizar.Visible = false;
@@ -910,10 +864,9 @@
             // 
             this.lbl_TotalRegistros.AutoSize = true;
             this.lbl_TotalRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalRegistros.Location = new System.Drawing.Point(232, 38);
-            this.lbl_TotalRegistros.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TotalRegistros.Location = new System.Drawing.Point(155, 25);
             this.lbl_TotalRegistros.Name = "lbl_TotalRegistros";
-            this.lbl_TotalRegistros.Size = new System.Drawing.Size(26, 29);
+            this.lbl_TotalRegistros.Size = new System.Drawing.Size(18, 20);
             this.lbl_TotalRegistros.TabIndex = 34;
             this.lbl_TotalRegistros.Text = "0";
             // 
@@ -921,10 +874,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(16, 38);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(11, 25);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(211, 29);
+            this.label13.Size = new System.Drawing.Size(138, 20);
             this.label13.TabIndex = 33;
             this.label13.Text = "Total de Registros";
             // 
@@ -935,10 +887,9 @@
             this.lbl_cargandoBordes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_cargandoBordes.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cargandoBordes.ForeColor = System.Drawing.Color.Red;
-            this.lbl_cargandoBordes.Location = new System.Drawing.Point(112, 335);
-            this.lbl_cargandoBordes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_cargandoBordes.Location = new System.Drawing.Point(75, 218);
             this.lbl_cargandoBordes.Name = "lbl_cargandoBordes";
-            this.lbl_cargandoBordes.Size = new System.Drawing.Size(345, 57);
+            this.lbl_cargandoBordes.Size = new System.Drawing.Size(239, 39);
             this.lbl_cargandoBordes.TabIndex = 32;
             this.lbl_cargandoBordes.Text = "Cargando ......";
             this.lbl_cargandoBordes.Visible = false;
@@ -955,13 +906,12 @@
             this.latitudDataGridViewTextBoxColumn2,
             this.amplitudDataGridViewTextBoxColumn1});
             this.dgv_lightningsBorders.DataSource = this.getAllLightningsByBoundsBindingSource;
-            this.dgv_lightningsBorders.Location = new System.Drawing.Point(22, 71);
-            this.dgv_lightningsBorders.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_lightningsBorders.Location = new System.Drawing.Point(15, 46);
             this.dgv_lightningsBorders.Name = "dgv_lightningsBorders";
             this.dgv_lightningsBorders.ReadOnly = true;
             this.dgv_lightningsBorders.RowHeadersVisible = false;
             this.dgv_lightningsBorders.RowHeadersWidth = 62;
-            this.dgv_lightningsBorders.Size = new System.Drawing.Size(525, 623);
+            this.dgv_lightningsBorders.Size = new System.Drawing.Size(350, 405);
             this.dgv_lightningsBorders.TabIndex = 31;
             // 
             // fechaHoraDataGridViewTextBoxColumn1
@@ -1007,10 +957,9 @@
             // 
             // btn_CrearKmlBordes
             // 
-            this.btn_CrearKmlBordes.Location = new System.Drawing.Point(22, 722);
-            this.btn_CrearKmlBordes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_CrearKmlBordes.Location = new System.Drawing.Point(15, 469);
             this.btn_CrearKmlBordes.Name = "btn_CrearKmlBordes";
-            this.btn_CrearKmlBordes.Size = new System.Drawing.Size(525, 52);
+            this.btn_CrearKmlBordes.Size = new System.Drawing.Size(350, 34);
             this.btn_CrearKmlBordes.TabIndex = 30;
             this.btn_CrearKmlBordes.Text = "Crear KML";
             this.btn_CrearKmlBordes.UseVisualStyleBackColor = true;
@@ -1029,29 +978,26 @@
             this.tabSubir.Controls.Add(this.btn_leer);
             this.tabSubir.Controls.Add(this.lbl_etiquetaCorrecta);
             this.tabSubir.Controls.Add(this.label14);
-            this.tabSubir.Location = new System.Drawing.Point(4, 29);
-            this.tabSubir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabSubir.Location = new System.Drawing.Point(4, 22);
             this.tabSubir.Name = "tabSubir";
-            this.tabSubir.Size = new System.Drawing.Size(622, 979);
+            this.tabSubir.Size = new System.Drawing.Size(412, 632);
             this.tabSubir.TabIndex = 3;
             this.tabSubir.Text = "Subir Datos";
             this.tabSubir.UseVisualStyleBackColor = true;
             // 
             // pb_completado
             // 
-            this.pb_completado.Location = new System.Drawing.Point(56, 200);
-            this.pb_completado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pb_completado.Location = new System.Drawing.Point(37, 130);
             this.pb_completado.Name = "pb_completado";
-            this.pb_completado.Size = new System.Drawing.Size(468, 35);
+            this.pb_completado.Size = new System.Drawing.Size(312, 23);
             this.pb_completado.TabIndex = 25;
             // 
             // lbl_progress
             // 
             this.lbl_progress.AutoSize = true;
-            this.lbl_progress.Location = new System.Drawing.Point(24, 306);
-            this.lbl_progress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_progress.Location = new System.Drawing.Point(16, 199);
             this.lbl_progress.Name = "lbl_progress";
-            this.lbl_progress.Size = new System.Drawing.Size(19, 20);
+            this.lbl_progress.Size = new System.Drawing.Size(13, 13);
             this.lbl_progress.TabIndex = 24;
             this.lbl_progress.Text = "--";
             // 
@@ -1060,19 +1006,17 @@
             this.lbl_fechaArchivo.AutoSize = true;
             this.lbl_fechaArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fechaArchivo.ForeColor = System.Drawing.Color.Red;
-            this.lbl_fechaArchivo.Location = new System.Drawing.Point(340, 6);
-            this.lbl_fechaArchivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_fechaArchivo.Location = new System.Drawing.Point(227, 4);
             this.lbl_fechaArchivo.Name = "lbl_fechaArchivo";
-            this.lbl_fechaArchivo.Size = new System.Drawing.Size(35, 33);
+            this.lbl_fechaArchivo.Size = new System.Drawing.Size(22, 24);
             this.lbl_fechaArchivo.TabIndex = 23;
             this.lbl_fechaArchivo.Text = "--";
             // 
             // btn_actualizar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(430, 394);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_actualizar.Location = new System.Drawing.Point(287, 256);
             this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(123, 37);
+            this.btn_actualizar.Size = new System.Drawing.Size(82, 24);
             this.btn_actualizar.TabIndex = 22;
             this.btn_actualizar.Text = "Actualizar";
             this.btn_actualizar.UseVisualStyleBackColor = true;
@@ -1081,10 +1025,9 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(24, 403);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(16, 262);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(174, 20);
+            this.label15.Size = new System.Drawing.Size(116, 13);
             this.label15.TabIndex = 21;
             this.label15.Text = "Datos Cargados en DB";
             // 
@@ -1098,13 +1041,12 @@
             this.fechaDataGridViewTextBoxColumn1,
             this.cantidadDataGridViewTextBoxColumn3});
             this.dgv_LightningsByDayP6.DataSource = this.countLightningsByDayP6BindingSource1;
-            this.dgv_LightningsByDayP6.Location = new System.Drawing.Point(28, 440);
-            this.dgv_LightningsByDayP6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_LightningsByDayP6.Location = new System.Drawing.Point(19, 286);
             this.dgv_LightningsByDayP6.Name = "dgv_LightningsByDayP6";
             this.dgv_LightningsByDayP6.ReadOnly = true;
             this.dgv_LightningsByDayP6.RowHeadersVisible = false;
             this.dgv_LightningsByDayP6.RowHeadersWidth = 62;
-            this.dgv_LightningsByDayP6.Size = new System.Drawing.Size(525, 506);
+            this.dgv_LightningsByDayP6.Size = new System.Drawing.Size(350, 329);
             this.dgv_LightningsByDayP6.TabIndex = 20;
             // 
             // fechaDataGridViewTextBoxColumn1
@@ -1137,22 +1079,20 @@
             // 
             // txt_log
             // 
-            this.txt_log.Location = new System.Drawing.Point(28, 115);
-            this.txt_log.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_log.Location = new System.Drawing.Point(19, 75);
             this.txt_log.Multiline = true;
             this.txt_log.Name = "txt_log";
             this.txt_log.ReadOnly = true;
             this.txt_log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_log.Size = new System.Drawing.Size(523, 184);
+            this.txt_log.Size = new System.Drawing.Size(350, 121);
             this.txt_log.TabIndex = 16;
             this.txt_log.TabStop = false;
             // 
             // btn_GuardarDB
             // 
-            this.btn_GuardarDB.Location = new System.Drawing.Point(346, 43);
-            this.btn_GuardarDB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_GuardarDB.Location = new System.Drawing.Point(231, 28);
             this.btn_GuardarDB.Name = "btn_GuardarDB";
-            this.btn_GuardarDB.Size = new System.Drawing.Size(207, 49);
+            this.btn_GuardarDB.Size = new System.Drawing.Size(138, 32);
             this.btn_GuardarDB.TabIndex = 15;
             this.btn_GuardarDB.Text = "Guardar en BD";
             this.btn_GuardarDB.UseVisualStyleBackColor = true;
@@ -1160,10 +1100,9 @@
             // 
             // btn_leer
             // 
-            this.btn_leer.Location = new System.Drawing.Point(28, 43);
-            this.btn_leer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_leer.Location = new System.Drawing.Point(19, 28);
             this.btn_leer.Name = "btn_leer";
-            this.btn_leer.Size = new System.Drawing.Size(207, 49);
+            this.btn_leer.Size = new System.Drawing.Size(138, 32);
             this.btn_leer.TabIndex = 14;
             this.btn_leer.Text = "Leer Archivo";
             this.btn_leer.UseVisualStyleBackColor = true;
@@ -1172,20 +1111,18 @@
             // lbl_etiquetaCorrecta
             // 
             this.lbl_etiquetaCorrecta.AutoSize = true;
-            this.lbl_etiquetaCorrecta.Location = new System.Drawing.Point(166, 18);
-            this.lbl_etiquetaCorrecta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_etiquetaCorrecta.Location = new System.Drawing.Point(111, 12);
             this.lbl_etiquetaCorrecta.Name = "lbl_etiquetaCorrecta";
-            this.lbl_etiquetaCorrecta.Size = new System.Drawing.Size(32, 20);
+            this.lbl_etiquetaCorrecta.Size = new System.Drawing.Size(23, 13);
             this.lbl_etiquetaCorrecta.TabIndex = 6;
             this.lbl_etiquetaCorrecta.Text = "NO";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(24, 18);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(16, 12);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(134, 20);
+            this.label14.Size = new System.Drawing.Size(89, 13);
             this.label14.TabIndex = 5;
             this.label14.Text = "Etiqueta Correcta";
             // 
@@ -1226,16 +1163,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 1185);
+            this.ClientSize = new System.Drawing.Size(436, 770);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descargas Atmosféricas";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
